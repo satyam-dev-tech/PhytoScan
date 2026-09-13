@@ -1,0 +1,166 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "schemaVersion": "1.0.0",
+  "projectInfo": {
+    "projectId": "swift-epoch-3q6d2",
+    "firestoreDatabaseId": "ai-studio-phytoscan-7fd47cb4-6d6c-4235-aa38-ef30e582f1bb"
+  },
+  "entities": [
+    {
+      "entityName": "User",
+      "collectionPath": "users",
+      "documentIdStrategy": "custom",
+      "description": "Registered agricultural operators and agronomists",
+      "fields": [
+        { "name": "id", "type": "string", "required": true },
+        { "name": "email", "type": "string", "required": true },
+        { "name": "name", "type": "string", "required": true },
+        { "name": "avatar", "type": "string", "required": false },
+        { "name": "role", "type": "string", "required": true },
+        { "name": "farmName", "type": "string", "required": true },
+        { "name": "location", "type": "string", "required": false },
+        { "name": "language", "type": "string", "required": true },
+        { "name": "cropsMonitored", "type": "number", "required": true },
+        { "name": "onboarded", "type": "boolean", "required": true },
+        { "name": "createdAt", "type": "string", "required": true },
+        { "name": "updatedAt", "type": "string", "required": true }
+      ]
+    },
+    {
+      "entityName": "Crop",
+      "collectionPath": "crops",
+      "documentIdStrategy": "auto",
+      "description": "Monitored farm crops, varieties, and vigor status",
+      "fields": [
+        { "name": "id", "type": "string", "required": true },
+        { "name": "userId", "type": "string", "required": true },
+        { "name": "name", "type": "string", "required": true },
+        { "name": "cropType", "type": "string", "required": true },
+        { "name": "field", "type": "string", "required": true },
+        { "name": "sowingDate", "type": "string", "required": true },
+        { "name": "acreage", "type": "number", "required": true },
+        { "name": "variety", "type": "string", "required": true },
+        { "name": "soilType", "type": "string", "required": true },
+        { "name": "currentHealthScore", "type": "number", "required": true },
+        { "name": "currentRiskLevel", "type": "string", "required": true },
+        { "name": "trend", "type": "string", "required": true },
+        { "name": "scoreDiff", "type": "number", "required": false },
+        { "name": "lastScanDate", "type": "string", "required": true },
+        { "name": "scanCount", "type": "number", "required": true },
+        { "name": "activeSymptoms", "type": "array", "required": false },
+        { "name": "createdAt", "type": "string", "required": true },
+        { "name": "updatedAt", "type": "string", "required": true }
+      ]
+    },
+    {
+      "entityName": "CropScan",
+      "collectionPath": "scans",
+      "documentIdStrategy": "auto",
+      "description": "Multimodal foliar scans and pathology observations",
+      "fields": [
+        { "name": "id", "type": "string", "required": true },
+        { "name": "cropId", "type": "string", "required": true },
+        { "name": "userId", "type": "string", "required": true },
+        { "name": "imageUrl", "type": "string", "required": true },
+        { "name": "timestamp", "type": "string", "required": true },
+        { "name": "healthScore", "type": "number", "required": true },
+        { "name": "condition", "type": "string", "required": true },
+        { "name": "severity", "type": "string", "required": true },
+        { "name": "riskLevel", "type": "string", "required": true },
+        { "name": "confidence", "type": "number", "required": true },
+        { "name": "symptoms", "type": "array", "required": true },
+        { "name": "observations", "type": "array", "required": true },
+        { "name": "recommendations", "type": "array", "required": true },
+        { "name": "explanation", "type": "string", "required": true },
+        { "name": "qualityScore", "type": "string", "required": false },
+        { "name": "qualityNotes", "type": "string", "required": false },
+        { "name": "createdAt", "type": "string", "required": true }
+      ]
+    },
+    {
+      "entityName": "RiskEvent",
+      "collectionPath": "riskEvents",
+      "documentIdStrategy": "auto",
+      "description": "Calculated early warning triggers and pathogen pressure indicators",
+      "fields": [
+        { "name": "id", "type": "string", "required": true },
+        { "name": "cropId", "type": "string", "required": true },
+        { "name": "userId", "type": "string", "required": true },
+        { "name": "title", "type": "string", "required": true },
+        { "name": "description", "type": "string", "required": true },
+        { "name": "riskLevel", "type": "string", "required": true },
+        { "name": "recommendation", "type": "string", "required": true },
+        { "name": "createdAt", "type": "string", "required": true }
+      ]
+    },
+    {
+      "entityName": "Report",
+      "collectionPath": "reports",
+      "documentIdStrategy": "auto",
+      "description": "Printable and archival agronomic dossiers",
+      "fields": [
+        { "name": "id", "type": "string", "required": true },
+        { "name": "cropId", "type": "string", "required": true },
+        { "name": "userId", "type": "string", "required": true },
+        { "name": "cropName", "type": "string", "required": true },
+        { "name": "title", "type": "string", "required": true },
+        { "name": "dateRange", "type": "string", "required": true },
+        { "name": "healthScore", "type": "number", "required": true },
+        { "name": "healthTrend", "type": "string", "required": true },
+        { "name": "farmerName", "type": "string", "required": true },
+        { "name": "farmName", "type": "string", "required": true },
+        { "name": "summary", "type": "string", "required": true },
+        { "name": "observations", "type": "array", "required": true },
+        { "name": "risks", "type": "array", "required": true },
+        { "name": "recommendations", "type": "array", "required": true },
+        { "name": "disclaimer", "type": "string", "required": true },
+        { "name": "createdAt", "type": "string", "required": true }
+      ]
+    },
+    {
+      "entityName": "AgentInvestigation",
+      "collectionPath": "investigations",
+      "documentIdStrategy": "auto",
+      "description": "Multi-tool autonomous diagnostic investigations",
+      "fields": [
+        { "name": "id", "type": "string", "required": true },
+        { "name": "cropId", "type": "string", "required": true },
+        { "name": "userId", "type": "string", "required": true },
+        { "name": "request", "type": "string", "required": true },
+        { "name": "date", "type": "string", "required": true },
+        { "name": "metrics", "type": "map", "required": true },
+        { "name": "steps", "type": "array", "required": true },
+        { "name": "finding", "type": "string", "required": true },
+        { "name": "createdAt", "type": "string", "required": true }
+      ]
+    },
+    {
+      "entityName": "Conversation",
+      "collectionPath": "conversations",
+      "documentIdStrategy": "auto",
+      "description": "AI Agronomy Assistant chat sessions",
+      "fields": [
+        { "name": "id", "type": "string", "required": true },
+        { "name": "userId", "type": "string", "required": true },
+        { "name": "title", "type": "string", "required": true },
+        { "name": "cropId", "type": "string", "required": false },
+        { "name": "createdAt", "type": "string", "required": true },
+        { "name": "updatedAt", "type": "string", "required": true }
+      ]
+    },
+    {
+      "entityName": "Message",
+      "collectionPath": "messages",
+      "documentIdStrategy": "auto",
+      "description": "Messages exchanged with the AI Agronomy Assistant",
+      "fields": [
+        { "name": "id", "type": "string", "required": true },
+        { "name": "conversationId", "type": "string", "required": true },
+        { "name": "userId", "type": "string", "required": true },
+        { "name": "role", "type": "string", "required": true },
+        { "name": "content", "type": "string", "required": true },
+        { "name": "timestamp", "type": "string", "required": true }
+      ]
+    }
+  ]
+}

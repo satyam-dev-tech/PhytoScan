@@ -1,0 +1,656 @@
+{
+  "users": [
+    {
+      "email": "agronomist@phytoscan.ai",
+      "name": "Dr. Satyam Chandra",
+      "avatar": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=200&q=80",
+      "language": "en",
+      "onboarded": true,
+      "id": "demo_agronomist_phytoscan",
+      "createdAt": "2026-09-13T10:00:32.431Z"
+    },
+    {
+      "id": "pyG9OvUzxcaRl0mg2y40LrV4qgt1",
+      "email": "chandrasatyam013@gmail.com",
+      "name": "SATYAM CHANDRA",
+      "avatar": "https://lh3.googleusercontent.com/a/ACg8ocJ-eyu7PfIb_jizQwsi8nn3DeMWcNQIiGJ3bv2-oRkTEOqfyclYow=s96-c",
+      "language": "en",
+      "onboarded": true,
+      "createdAt": "2026-09-13T10:11:16.834Z"
+    },
+    {
+      "id": "demo_agronomist_phytoscan",
+      "email": "demo_agronomist_phytoscan@phytoscan.ai",
+      "name": "Demo Farmer",
+      "avatar": "https://api.dicebear.com/7.x/bottts/svg?seed=demo_agronomist_phytoscan",
+      "language": "en",
+      "onboarded": true,
+      "createdAt": "2026-09-13T10:15:13.026Z"
+    }
+  ],
+  "farms": [
+    {
+      "userId": "usr_1cb253ca-21c",
+      "name": "Green Valley Farm",
+      "location": "Salinas Valley Plot",
+      "sizeAcres": 45,
+      "id": "farm_e62250d1-6e7",
+      "createdAt": "2026-09-13T10:00:39.568Z"
+    },
+    {
+      "userId": "demo_agronomist_phytoscan",
+      "name": "Verdant Horizon Agro",
+      "location": "Salinas Valley, CA",
+      "sizeAcres": 120,
+      "id": "farm_bfad2792-fa2",
+      "createdAt": "2026-09-13T10:15:13.027Z"
+    },
+    {
+      "userId": "pyG9OvUzxcaRl0mg2y40LrV4qgt1",
+      "name": "My Primary Farm",
+      "location": "Regional Sector",
+      "sizeAcres": 40,
+      "id": "farm_cce6ff5a-bd1",
+      "createdAt": "2026-09-13T10:41:27.250Z"
+    }
+  ],
+  "crops": [
+    {
+      "farmId": "farm_e62250d1-6e7",
+      "userId": "usr_1cb253ca-21c",
+      "name": "Tomato Field A",
+      "cropType": "Tomato",
+      "variety": "Roma VF",
+      "field": "Field 1 - Sector South",
+      "location": "Salinas Valley Plot",
+      "plantingDate": "2026-09-13",
+      "notes": "First registered crop during onboarding.",
+      "imageUrl": "https://images.unsplash.com/photo-1592841200221-a6898f307baa?auto=format&fit=crop&w=800&q=80",
+      "status": "active",
+      "currentHealthScore": 92,
+      "currentRiskLevel": "low",
+      "id": "crop_e74d4545-d6f",
+      "createdAt": "2026-09-13T10:00:39.568Z",
+      "updatedAt": "2026-09-13T10:00:39.568Z"
+    },
+    {
+      "farmId": "farm_bfad2792-fa2",
+      "userId": "demo_agronomist_phytoscan",
+      "name": "Tomato Field A",
+      "cropType": "Tomato",
+      "variety": "Roma VF",
+      "field": "Field A - Section 3",
+      "location": "Salinas Valley Plot 4",
+      "plantingDate": "2026-08-01",
+      "notes": "Monitored for early blight susceptibility during humid mornings. Drip irrigated.",
+      "imageUrl": "https://images.unsplash.com/photo-1592841200221-a6898f307baa?auto=format&fit=crop&w=800&q=80",
+      "status": "active",
+      "currentHealthScore": 68,
+      "currentRiskLevel": "moderate",
+      "id": "crop_9bf9e511-d35",
+      "createdAt": "2026-09-13T10:15:13.027Z",
+      "updatedAt": "2026-09-13T10:15:13.027Z"
+    },
+    {
+      "farmId": "farm_bfad2792-fa2",
+      "userId": "demo_agronomist_phytoscan",
+      "name": "Wheat North Acre",
+      "cropType": "Wheat",
+      "variety": "Hard Red Winter",
+      "field": "North Acre Field 1",
+      "location": "Northern Terrace",
+      "plantingDate": "2026-07-15",
+      "notes": "Heading stage. Excellent tiller development, optimal soil nitrogen levels.",
+      "imageUrl": "https://images.unsplash.com/photo-1574943320219-553eb213f72d?auto=format&fit=crop&w=800&q=80",
+      "status": "active",
+      "currentHealthScore": 88,
+      "currentRiskLevel": "low",
+      "id": "crop_bbd6a2a4-b26",
+      "createdAt": "2026-09-13T10:15:13.027Z",
+      "updatedAt": "2026-09-13T10:15:13.027Z"
+    },
+    {
+      "farmId": "farm_bfad2792-fa2",
+      "userId": "demo_agronomist_phytoscan",
+      "name": "Bell Pepper Greenhouse",
+      "cropType": "Bell Pepper",
+      "variety": "California Wonder",
+      "field": "Greenhouse B",
+      "location": "Climate Zone 2",
+      "plantingDate": "2026-08-10",
+      "notes": "Controlled environment agriculture. High relative humidity management.",
+      "imageUrl": "https://images.unsplash.com/photo-1563565375-f3fdfdbefa83?auto=format&fit=crop&w=800&q=80",
+      "status": "active",
+      "currentHealthScore": 92,
+      "currentRiskLevel": "low",
+      "id": "crop_73e2475b-812",
+      "createdAt": "2026-09-13T10:15:13.028Z",
+      "updatedAt": "2026-09-13T10:15:13.028Z"
+    },
+    {
+      "id": "crop_7349916b-77e",
+      "userId": "demo_agronomist_phytoscan",
+      "name": "Tomato Field A",
+      "cropType": "Tomato",
+      "variety": "Standard",
+      "field": "North Field 1",
+      "location": "",
+      "plantingDate": "2026-08-15",
+      "currentHealthScore": 85,
+      "currentRiskLevel": "low",
+      "status": "active",
+      "farmId": "farm-1",
+      "imageUrl": "",
+      "createdAt": "2026-09-13T11:07:49.906Z",
+      "updatedAt": "2026-09-13T11:07:49.906Z"
+    },
+    {
+      "id": "crop_32699032-a77",
+      "userId": "demo_agronomist_phytoscan",
+      "name": "Tomato Field A",
+      "cropType": "Tomato",
+      "variety": "Standard",
+      "field": "North Field 1",
+      "location": "",
+      "plantingDate": "2026-09-13",
+      "currentHealthScore": 85,
+      "currentRiskLevel": "low",
+      "status": "active",
+      "farmId": "farm-1",
+      "imageUrl": "",
+      "createdAt": "2026-09-13T11:08:55.064Z",
+      "updatedAt": "2026-09-13T11:08:55.064Z"
+    },
+    {
+      "id": "crop_df06ea72-8c4",
+      "userId": "demo_agronomist_phytoscan",
+      "name": "Tomato Field A",
+      "cropType": "Tomato",
+      "variety": "Standard",
+      "field": "North Field - Sector A4",
+      "location": "",
+      "plantingDate": "2026-08-15",
+      "currentHealthScore": 85,
+      "currentRiskLevel": "low",
+      "status": "active",
+      "farmId": "farm-1",
+      "imageUrl": "",
+      "createdAt": "2026-09-13T11:09:15.164Z",
+      "updatedAt": "2026-09-13T11:09:15.164Z"
+    }
+  ],
+  "scans": [
+    {
+      "id": "scan_tom_01",
+      "cropId": "crop_9bf9e511-d35",
+      "userId": "demo_agronomist_phytoscan",
+      "imageUrl": "https://images.unsplash.com/photo-1592841200221-a6898f307baa?auto=format&fit=crop&w=800&q=80",
+      "timestamp": "2026-08-20T10:00:00.000Z",
+      "healthScore": 94,
+      "condition": "Healthy Vegetative State",
+      "severity": "low",
+      "riskLevel": "stable",
+      "confidence": 0.95,
+      "symptoms": [
+        "None detected",
+        "Uniform foliage pigmentation"
+      ],
+      "observations": [
+        "Vigorous canopy growth",
+        "Optimal chlorophyll density",
+        "No fungal spotting"
+      ],
+      "recommendations": [
+        "Maintain current irrigation schedule",
+        "Routine scout in 7 days"
+      ],
+      "explanation": "Foliage shows vibrant cell turgidity and no evidence of pathogenic stress."
+    },
+    {
+      "id": "scan_tom_02",
+      "cropId": "crop_9bf9e511-d35",
+      "userId": "demo_agronomist_phytoscan",
+      "imageUrl": "https://images.unsplash.com/photo-1594489428504-5c0c480a15fd?auto=format&fit=crop&w=800&q=80",
+      "timestamp": "2026-08-27T10:30:00.000Z",
+      "healthScore": 87,
+      "condition": "Early Symptom Emergence",
+      "severity": "low",
+      "riskLevel": "monitoring_required",
+      "confidence": 0.86,
+      "symptoms": [
+        "Faint chlorotic micro-speckling on lower leaf margins"
+      ],
+      "observations": [
+        "Minor moisture retention in lower canopy",
+        "Targeted spot inspection needed"
+      ],
+      "recommendations": [
+        "Inspect lower leaf underside for fungal mycelium",
+        "Reduce morning leaf wetness duration"
+      ],
+      "explanation": "Subtle lower leaf chlorosis observed; likely early foliar adaptation or initial fungal spore germination."
+    },
+    {
+      "id": "scan_tom_03",
+      "cropId": "crop_9bf9e511-d35",
+      "userId": "demo_agronomist_phytoscan",
+      "imageUrl": "https://images.unsplash.com/photo-1598170845058-32b9d6a5da37?auto=format&fit=crop&w=800&q=80",
+      "timestamp": "2026-09-03T11:15:00.000Z",
+      "healthScore": 74,
+      "condition": "Possible Early Blight (Alternaria solani)",
+      "severity": "moderate",
+      "riskLevel": "increasing",
+      "confidence": 0.78,
+      "symptoms": [
+        "Concentric ring brown lesions",
+        "Chlorotic halo around lesions on lower leaves"
+      ],
+      "observations": [
+        "Pathogen spread advancing upward by 1 node",
+        "Leaf margin curling detected"
+      ],
+      "recommendations": [
+        "Apply preventive copper-based or bio-fungicide",
+        "Prune lower leaves touching wet soil"
+      ],
+      "explanation": "Concentric ring brown lesions strongly suggest early blight progression. Risk is increasing due to ambient humidity."
+    },
+    {
+      "id": "scan_tom_04",
+      "cropId": "crop_9bf9e511-d35",
+      "userId": "demo_agronomist_phytoscan",
+      "imageUrl": "https://images.unsplash.com/photo-1592841200221-a6898f307baa?auto=format&fit=crop&w=800&q=80",
+      "timestamp": "2026-09-10T09:45:00.000Z",
+      "healthScore": 68,
+      "condition": "Progressing Early Blight — Monitoring Required",
+      "severity": "moderate",
+      "riskLevel": "increasing",
+      "confidence": 0.84,
+      "symptoms": [
+        "Multiple concentric lesions",
+        "Premature senescent leaf drop",
+        "Mild stem collar speckling"
+      ],
+      "observations": [
+        "Canopy density reduced by ~12%",
+        "Active spore propagation risk"
+      ],
+      "recommendations": [
+        "Conduct targeted bio-fungicide treatment",
+        "Isolate affected rows during cultivation",
+        "Re-scan in 48 hours"
+      ],
+      "explanation": "Symptom severity has intensified with leaf shedding on primary lower tiers. Continuous monitoring required."
+    },
+    {
+      "id": "scan_wht_01",
+      "cropId": "crop_bbd6a2a4-b26",
+      "userId": "demo_agronomist_phytoscan",
+      "imageUrl": "https://images.unsplash.com/photo-1574943320219-553eb213f72d?auto=format&fit=crop&w=800&q=80",
+      "timestamp": "2026-09-08T08:00:00.000Z",
+      "healthScore": 88,
+      "condition": "Optimal Canopy Development",
+      "severity": "low",
+      "riskLevel": "stable",
+      "confidence": 0.92,
+      "symptoms": [
+        "Minimal tip desiccation on older leaves"
+      ],
+      "observations": [
+        "Robust flag leaf emergence",
+        "Uniform spikelet development",
+        "No rust pustules detected"
+      ],
+      "recommendations": [
+        "Monitor soil moisture during grain filling",
+        "Re-scan in 10 days"
+      ],
+      "explanation": "Healthy wheat stand with stable nitrogen assimilation and no rust or mildew pathogen traces."
+    },
+    {
+      "id": "scan_pep_01",
+      "cropId": "crop_73e2475b-812",
+      "userId": "demo_agronomist_phytoscan",
+      "imageUrl": "https://images.unsplash.com/photo-1563565375-f3fdfdbefa83?auto=format&fit=crop&w=800&q=80",
+      "timestamp": "2026-09-11T14:20:00.000Z",
+      "healthScore": 92,
+      "condition": "Optimal Vegetative Stage",
+      "severity": "low",
+      "riskLevel": "stable",
+      "confidence": 0.94,
+      "symptoms": [
+        "None"
+      ],
+      "observations": [
+        "Strong stem calyx structure",
+        "Deep green pigmentation",
+        "Zero aphid or mite presence"
+      ],
+      "recommendations": [
+        "Continue balanced fertigation",
+        "Maintain greenhouse humidity below 75%"
+      ],
+      "explanation": "Greenhouse peppers exhibit outstanding vigor and balanced nutritional development."
+    }
+  ],
+  "analyses": [],
+  "healthTimeline": [
+    {
+      "id": "hl_a6f1e153-34d",
+      "cropId": "crop_e74d4545-d6f",
+      "date": "2026-09-13T10:00:39.568Z",
+      "healthScore": 92,
+      "statusLabel": "Initial Registration",
+      "notes": "Crop registered in Phytoscan intelligence system."
+    },
+    {
+      "id": "hl_tom_1",
+      "cropId": "crop_9bf9e511-d35",
+      "date": "2026-08-20T10:00:00.000Z",
+      "healthScore": 94,
+      "statusLabel": "Healthy",
+      "scanId": "scan_tom_01",
+      "notes": "Day 1 scan: Vigorous, healthy foliage."
+    },
+    {
+      "id": "hl_tom_2",
+      "cropId": "crop_9bf9e511-d35",
+      "date": "2026-08-27T10:30:00.000Z",
+      "healthScore": 87,
+      "statusLabel": "Early Symptoms",
+      "scanId": "scan_tom_02",
+      "notes": "Day 7 scan: Minor chlorotic speckling observed."
+    },
+    {
+      "id": "hl_tom_3",
+      "cropId": "crop_9bf9e511-d35",
+      "date": "2026-09-03T11:15:00.000Z",
+      "healthScore": 74,
+      "statusLabel": "Risk Increasing",
+      "scanId": "scan_tom_03",
+      "notes": "Day 14 scan: Concentric lesions indicate early blight."
+    },
+    {
+      "id": "hl_tom_4",
+      "cropId": "crop_9bf9e511-d35",
+      "date": "2026-09-10T09:45:00.000Z",
+      "healthScore": 68,
+      "statusLabel": "Monitoring Required",
+      "scanId": "scan_tom_04",
+      "notes": "Day 21 scan: Moderate progression, requires intervention."
+    },
+    {
+      "id": "hl_e3e70803-347",
+      "cropId": "crop_bbd6a2a4-b26",
+      "date": "2026-09-13T10:15:13.027Z",
+      "healthScore": 88,
+      "statusLabel": "Initial Registration",
+      "notes": "Crop registered in Phytoscan intelligence system."
+    },
+    {
+      "id": "hl_99da440d-26f",
+      "cropId": "crop_73e2475b-812",
+      "date": "2026-09-13T10:15:13.028Z",
+      "healthScore": 92,
+      "statusLabel": "Initial Registration",
+      "notes": "Crop registered in Phytoscan intelligence system."
+    }
+  ],
+  "riskEvents": [
+    {
+      "id": "risk_tom_01",
+      "cropId": "crop_9bf9e511-d35",
+      "userId": "demo_agronomist_phytoscan",
+      "scanId": "scan_tom_04",
+      "title": "Progressive Early Blight Alert",
+      "description": "Tomato Field A has experienced a 26-point decline across 21 days (94 → 68). Repeated concentric ring lesions observed.",
+      "riskLevel": "elevated",
+      "severity": "moderate",
+      "date": "2026-09-10T09:45:00.000Z",
+      "resolved": false
+    }
+  ],
+  "conversations": [
+    {
+      "id": "conv_8a08604b-99f",
+      "userId": "demo_agronomist_phytoscan",
+      "title": "Why is my tomato health score falling?",
+      "createdAt": "2026-09-13T10:16:31.049Z",
+      "updatedAt": "2026-09-13T10:16:48.557Z"
+    },
+    {
+      "id": "conv_35df20b0-3b3",
+      "userId": "demo_agronomist_phytoscan",
+      "title": "Why is my tomato health score falling?",
+      "createdAt": "2026-09-13T10:15:13.029Z",
+      "updatedAt": "2026-09-13T10:15:55.011Z"
+    },
+    {
+      "id": "conv_6c2b2152-eec",
+      "userId": "pyG9OvUzxcaRl0mg2y40LrV4qgt1",
+      "title": "hi",
+      "createdAt": "2026-09-13T10:11:40.733Z",
+      "updatedAt": "2026-09-13T10:54:07.255Z"
+    }
+  ],
+  "messages": [
+    {
+      "conversationId": "conv_6c2b2152-eec",
+      "role": "user",
+      "content": "hi",
+      "id": "msg_ebe3e9c0-abe",
+      "timestamp": "2026-09-13T10:11:40.733Z"
+    },
+    {
+      "conversationId": "conv_6c2b2152-eec",
+      "role": "assistant",
+      "content": "Based on your farm records, Phytoscan is actively monitoring your registered crops. Tomato Field A currently shows a declining trend down to 68/100 due to observed early blight symptoms, while your other crops remain in good condition. (AI service operating in offline assistant mode).",
+      "id": "msg_5bd01c90-d78",
+      "timestamp": "2026-09-13T10:11:43.471Z"
+    },
+    {
+      "conversationId": "conv_6c2b2152-eec",
+      "role": "user",
+      "content": "what",
+      "id": "msg_7ba717b0-367",
+      "timestamp": "2026-09-13T10:11:51.749Z"
+    },
+    {
+      "conversationId": "conv_6c2b2152-eec",
+      "role": "assistant",
+      "content": "Based on your farm records, Phytoscan is actively monitoring your registered crops. Tomato Field A currently shows a declining trend down to 68/100 due to observed early blight symptoms, while your other crops remain in good condition. (AI service operating in offline assistant mode).",
+      "id": "msg_a0d91381-a02",
+      "timestamp": "2026-09-13T10:12:04.769Z"
+    },
+    {
+      "conversationId": "conv_35df20b0-3b3",
+      "role": "user",
+      "content": "Why is my tomato health score falling?",
+      "id": "msg_36f811a6-b0d",
+      "timestamp": "2026-09-13T10:15:13.030Z"
+    },
+    {
+      "conversationId": "conv_35df20b0-3b3",
+      "role": "assistant",
+      "content": "Based on Phytoscan’s longitudinal tracking for **Tomato Field A (Roma VF)**, your health score has declined by **26 points over 21 days (from 94 down to 68)**. \n\nThe decline is driven by the emergence and steady progression of **Early Blight (*Alternaria solani*)**, which has advanced from minor localized stress into structural foliage and stem symptoms.\n\n---\n\n### Timeline of Progression:\n\n* **August 20, 2026 — Score: 94/100 (Optimal)**\n  * **Status:** Healthy vegetative stage with uniform pigmentation and no visible pathogens.\n* **August 27, 2026 — Score: 87/100 (-7 pts)**\n  * **Early Warning:** Faint chlorotic micro-speckling began appearing on the lower leaf margins, indicating the first signs of stress.\n* **September 3, 2026 — Score: 74/100 (-13 pts)**\n  * **Active Infection:** Characteristic **concentric \"target-board\" brown lesions** with yellow chlorotic halos developed on lower foliage, confirming suspected Early Blight.\n* **September 10, 2026 — Score: 68/100 (-6 pts)**\n  * **Escalation:** The infection spread further, causing **premature senescent leaf drop** (defoliation of lower canopy) and **mild stem collar speckling**, shifting the risk alert level to **Moderate / Elevated**.\n\n---\n\n### Key Contributing Factors\n* **Microclimate & Foliar Moisture:** Your crop notes mention morning humidity susceptibility. Prolonged leaf wetness combined with fungal spores typically accelerates *Alternaria solani* spread from the soil and lower canopy upward.\n\n---\n\n### Recommended Immediate Actions:\n1. **Prune & Sanitize:** Immediately prune and bag infected lower leaves that show concentric spotting or yellowing. Do not compost infected plant debris.\n2. **Improve Air Circulation & Mulch:** Ensure bottom foliage is elevated off bare soil to prevent soil-splash reinfection.\n3. **Targeted Fungicide Treatment:** Consider applying an appropriate preventative or curative bio-fungicide (e.g., copper-based or approved targeted fungicide for Early Blight).\n4. **Irrigation Review:** Continue using drip irrigation to keep water strictly at the base and avoid wetting the foliage.\n\n---\n\n*Disclaimer: Phytoscan provides AI-assisted monitoring and pattern tracking based on visual scans. For definitive pathogen confirmation, consider laboratory or local extension tissue testing.*",
+      "id": "msg_c8b37ba3-dda",
+      "timestamp": "2026-09-13T10:15:55.011Z"
+    },
+    {
+      "conversationId": "conv_8a08604b-99f",
+      "role": "user",
+      "content": "Why is my tomato health score falling?",
+      "id": "msg_2d809acb-9f8",
+      "timestamp": "2026-09-13T10:16:31.050Z"
+    },
+    {
+      "conversationId": "conv_8a08604b-99f",
+      "role": "assistant",
+      "content": "Based on your scan history in **Tomato Field A (Roma VF)**, your health score has declined by **26 points over the last 21 days (dropping from 94 to 68)**. \n\nBecause Phytoscan tracks your crop over time, we can pinpoint the progressive onset and spread of **Early Blight (*Alternaria solani*)**:\n\n---\n\n### **Timeline of the Decline**\n\n* **Aug 20, 2026 — Score: 94/100 (Healthy Vegetative State)**\n  * **Status:** Optimal canopy with uniform pigmentation and zero detected symptoms.\n* **Aug 27, 2026 — Score: 87/100 (Early Symptom Emergence)**\n  * **Change:** A 7-point drop triggered by faint **chlorotic micro-speckling** on the lower leaf margins.\n* **Sep 3, 2026 — Score: 74/100 (Possible Early Blight)**\n  * **Change:** A sharp 13-point decline. Fungal pathology became apparent with characteristic **target-pattern concentric brown rings** bordered by chlorotic (yellowing) halos on lower foliage.\n* **Sep 10, 2026 — Score: 68/100 (Progressing Early Blight — Active Alert)**\n  * **Change:** A further 6-point decline. The infection has expanded into **multiple concentric lesions**, accompanied by **premature leaf drop (senescence)** and **mild stem collar speckling**, signaling upward progression into the canopy.\n\n---\n\n### **Why Is This Happening?**\nEarly Blight thrives in warm, humid microclimates (frequently noted during humid mornings in your field notes). The pathogen begins in the lower canopy where air circulation is lowest and leaf wetness persists, gradually defoliating the plant from the ground up.\n\n---\n\n### **Recommended Action Plan**\n\n1. **Sanitation & Pruning:** Remove and destroy infected lower leaves displaying concentric lesions to reduce fungal spore loads. Avoid composting infected tissue near the field.\n2. **Canopy Airflow:** Ensure adequate spacing and prune suckers/lower foliage to improve airflow and accelerate morning drying.\n3. **Targeted Fungicide Treatment:** Consider applying an approved protective fungicide (such as a copper-based bactericide/fungicide or targeted bio-fungicide) labeled for *Alternaria solani* on tomatoes.\n4. **Moisture Control:** Continue utilizing drip irrigation and ensure water does not splash soil or spores onto healthy stems.\n\n---\n\n*Note: Phytoscan provides AI-assisted monitoring insights based on visual pattern recognition and historical trends, not a guaranteed laboratory diagnosis. For severe or persistent infections, verify with your local agricultural extension agent or plant pathology lab.*",
+      "id": "msg_445bfc7f-0ba",
+      "timestamp": "2026-09-13T10:16:37.985Z"
+    },
+    {
+      "conversationId": "conv_8a08604b-99f",
+      "role": "user",
+      "content": "Which crop is healthiest right now?",
+      "id": "msg_06e98889-69f",
+      "timestamp": "2026-09-13T10:16:40.538Z"
+    },
+    {
+      "conversationId": "conv_8a08604b-99f",
+      "role": "assistant",
+      "content": "Your healthiest crop right now is the **Bell Pepper Greenhouse (California Wonder)**.\n\n---\n\n### **Crop Health Breakdown**\n\n* **1. Bell Pepper Greenhouse — 92/100 (Healthiest)**\n  * **Risk Level:** Low\n  * **Latest Scan (Sep 11, 2026):** *Optimal Vegetative Stage*\n  * **Condition:** Zero detected symptoms. The controlled greenhouse environment is effectively managing humidity and keeping disease pressure low.\n\n* **2. Wheat North Acre — 88/100 (Strong)**\n  * **Risk Level:** Low\n  * **Latest Scan (Sep 8, 2026):** *Optimal Canopy Development*\n  * **Condition:** Excellent tiller development at heading stage, with only minor natural tip desiccation on older leaves.\n\n* **3. Tomato Field A — 68/100 (Requires Attention)**\n  * **Risk Level:** Moderate\n  * **Latest Scan (Sep 10, 2026):** *Progressing Early Blight*\n\n---\n\n*Reminder: Phytoscan provides continuous AI-assisted monitoring insights to help you track canopy vigor and catch irregularities early.*",
+      "id": "msg_0ee01575-4f4",
+      "timestamp": "2026-09-13T10:16:48.557Z"
+    },
+    {
+      "conversationId": "conv_6c2b2152-eec",
+      "role": "user",
+      "content": "which model are you performing on",
+      "id": "msg_4210725c-32a",
+      "timestamp": "2026-09-13T10:53:51.001Z"
+    },
+    {
+      "conversationId": "conv_6c2b2152-eec",
+      "role": "assistant",
+      "content": "I am Gemini 3.8 Flash, a large language model built by Google, currently powering the Phytoscan Crop Health Intelligence Assistant to help you monitor and analyze your crop health data.",
+      "id": "msg_160750be-2d2",
+      "timestamp": "2026-09-13T10:53:53.703Z"
+    },
+    {
+      "conversationId": "conv_6c2b2152-eec",
+      "role": "user",
+      "content": "hi'",
+      "id": "msg_07a1830e-8b9",
+      "timestamp": "2026-09-13T10:54:02.028Z"
+    },
+    {
+      "conversationId": "conv_6c2b2152-eec",
+      "role": "assistant",
+      "content": "Hello! How can I assist you with your crops today? \n\nWhether you'd like to review recent scan histories, analyze health trends (such as the recent alerts on **Tomato Field A**), or check which fields need immediate attention, I'm here to help.\n\n*(Please note: Phytoscan provides AI-assisted monitoring insights to guide your farm management, not a definitive laboratory diagnosis.)*",
+      "id": "msg_e27fb9ab-eb2",
+      "timestamp": "2026-09-13T10:54:07.255Z"
+    }
+  ],
+  "investigations": [
+    {
+      "userId": "pyG9OvUzxcaRl0mg2y40LrV4qgt1",
+      "cropId": "crop_b57c1d13-621",
+      "request": "Analyze health trajectory and pathogen trends over all historical scans",
+      "steps": [
+        {
+          "step": "Retrieve crop profile",
+          "status": "completed",
+          "detail": "Loaded Tomato Field A (Tomato)"
+        },
+        {
+          "step": "Retrieve scan history",
+          "status": "completed",
+          "detail": "Retrieved 4 historical scans across 21 days"
+        },
+        {
+          "step": "Retrieve timeline & risk factors",
+          "status": "completed",
+          "detail": "Evaluated 1 recorded risk events"
+        },
+        {
+          "step": "Compare sequential scans",
+          "status": "completed",
+          "detail": "Score trajectory: 94 → 87 → 74 → 68"
+        },
+        {
+          "step": "Detect health trends",
+          "status": "completed",
+          "detail": "Trend identified as DECLINING (-26 points)"
+        },
+        {
+          "step": "Evaluate pathogen progression",
+          "status": "completed",
+          "detail": "Primary condition: Progressing Early Blight — Monitoring Required"
+        },
+        {
+          "step": "Synthesize finding & strategic actions",
+          "status": "completed",
+          "detail": "Agent investigation complete"
+        }
+      ],
+      "finding": "**Phytoscan AI Crop Health Investigation Agent — Diagnostic Summary**\n\nAcross the 21-day evaluation window (August 20 – September 10, 2026), Tomato Field A (Section 3) experienced a precipitous, uninterrupted health score decline from an optimal 94/100 to an impaired 68/100 (net degradation of -26 points). This AI-assisted assessment indicates an active, accelerating disease transition, shifting the crop from an asymptomatic vegetative baseline to a compromised state dominated by symptomatic indicators consistent with possible *Alternaria solani* (Early Blight) infection.\n\nPathological analysis reveals classic acropetal (bottom-up) disease dynamics. Initial marginal micro-speckling on lower foliage at Day 8 developed into diagnostic concentric, \"target-board\" brown lesions bordered by chlorotic halos by Day 15. The subsequent transition at Day 22 to premature senescent leaf abscission and stem collar speckling signifies advanced localized structural colonization and potential secondary sporulation. This trajectory denotes aggressive possible pathogen progression, likely facilitated by microclimatic stressors such as prolonged leaf wetness duration, dense canopy humidity, or alternating damp/warm conditions favorable to fungal expansion.\n\nTo arrest defoliation and prevent upward transmission into primary fruiting canopies, immediate agronomic intervention is advised. Cultural protocols should focus on targeted sanitization—pruning and destroying symptomatic lower canopy foliage to reduce spore reservoirs—alongside irrigation timing adjustments to eliminate extended foliage wetness. Concurrently, field managers should evaluate an immediate rotational fungicide program featuring targeted protectant (e.g., FRAC M05) and translaminar/systemic modes of action (e.g., FRAC 7 or 11). Please note that this AI-assisted assessment represents probabilistic diagnostic modeling; physical in-field inspection and plant tissue lab verification are recommended prior to executing high-impact chemical countermeasures.",
+      "metrics": {
+        "startScore": 94,
+        "currentScore": 68,
+        "scoreChange": -26,
+        "daysSpan": 21,
+        "scansEvaluated": 4,
+        "trend": "declining",
+        "riskLevel": "elevated",
+        "confidence": "86% (High Confidence Trend)"
+      },
+      "id": "inv_2b653178-176",
+      "date": "2026-09-13T10:16:09.111Z"
+    }
+  ],
+  "reports": [
+    {
+      "userId": "demo_agronomist_phytoscan",
+      "cropId": "crop_9bf9e511-d35",
+      "cropName": "Tomato Field A",
+      "farmName": "Verdant Horizon Agro",
+      "farmerName": "Lead Agronomist",
+      "title": "Phytoscan Health Diagnostic & Trend Report — Tomato Field A",
+      "dateRange": "Aug 20, 2026 – Sep 10, 2026 (21 Days)",
+      "healthScore": 68,
+      "healthTrend": "Declining (-26 pts over 21 days)",
+      "summary": "Continuous 21-day timeline surveillance indicates a progressive shift from healthy baseline (94/100) to moderate early blight pathogen stress (68/100). Concentric fungal lesions identified.",
+      "observations": [
+        "Initial chlorosis first surfaced at Day 7 on lower canopy leaves.",
+        "Concentric brown ring lesions appeared at Day 14 (confidence 78%).",
+        "By Day 21, approximately 12% foliar leaf drop was observed."
+      ],
+      "risks": [
+        "High likelihood of upward canopy migration if relative morning humidity persists above 85%.",
+        "Secondary bacterial soft rot risk during fruiting stage."
+      ],
+      "recommendations": [
+        "Administer copper-hydroxide or registered organic bio-fungicide immediately.",
+        "Prune lower 6 inches of foliage to limit splash dispersal of soilborne spores.",
+        "Transition from overhead watering to localized drip irrigation."
+      ],
+      "disclaimer": "Phytoscan provides AI-assisted educational and crop-monitoring insights. It does not replace qualified agricultural expertise or laboratory tissue testing.",
+      "id": "rep_dcd9d1a8-11a",
+      "createdAt": "2026-09-13T10:15:13.028Z"
+    }
+  ],
+  "notifications": [
+    {
+      "id": "notif_demo_1",
+      "userId": "demo_agronomist_phytoscan",
+      "cropId": "crop_9bf9e511-d35",
+      "type": "trend_alert",
+      "title": "Health Trend Changed: Tomato Field A",
+      "message": "Tomato Field A health score decreased by 6 points (74 → 68). Monitoring required.",
+      "date": "2026-09-10T09:45:00.000Z",
+      "read": false
+    },
+    {
+      "id": "notif_demo_2",
+      "userId": "demo_agronomist_phytoscan",
+      "cropId": "crop_9bf9e511-d35",
+      "type": "emerging_risk",
+      "title": "Emerging Risk Detected",
+      "message": "Repeated possible early blight symptoms were observed across 3 consecutive scans.",
+      "date": "2026-09-03T11:15:00.000Z",
+      "read": false
+    },
+    {
+      "id": "notif_demo_3",
+      "userId": "demo_agronomist_phytoscan",
+      "cropId": "crop_bbd6a2a4-b26",
+      "type": "reminder",
+      "title": "Monitoring Reminder",
+      "message": "Wheat North Acre is due for its weekly flag-leaf inspection scan.",
+      "date": "2026-09-13T10:15:13.028Z",
+      "read": true
+    }
+  ]
+}

@@ -1,0 +1,7 @@
+{
+  "name": "Phytoscan",
+  "description": "AI-powered Crop Health Intelligence Platform. Scan, understand, and protect crops with continuous health memory, trend detection, and AI agent investigation.",
+  "requestFramePermissions": ["camera", "microphone"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
+
