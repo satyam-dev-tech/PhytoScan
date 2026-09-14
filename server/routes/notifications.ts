@@ -1,14 +1,15 @@
 import { Router, Request, Response } from 'express';
-import { db, User } from '../db.js';
+import { firestore } from '../firebase-admin.js';
 import { authenticateUser } from './auth.js';
 
 export const notificationsRouter = Router();
 
 // Get user notifications
-notificationsRouter.get('/', authenticateUser, (req: Request, res: Response) => {
+notificationsRouter.get('/', authenticateUser, async (req: Request, res: Response) => {
   try {
-    const user = (req as any).user as User;
-    const notifications = db.getNotificationsByUser(user.id);
+    const user = (req as any).user;
+    const notificationsSnap = await firestore.collection('notifications').where('userId', '==', user.id).orderBy('date', 'desc').get();
+    const notifications = notificationsSnap.docs.map(doc => ({id: doc.id, ...doc.data()}));
     res.json(notifications);
   } catch (err: any) {
     res.status(500).json({ error: err.message || 'Failed to fetch notifications' });
@@ -16,20 +17,25 @@ notificationsRouter.get('/', authenticateUser, (req: Request, res: Response) => 
 });
 
 // Mark single notification read
-notificationsRouter.put('/:id/read', authenticateUser, (req: Request, res: Response) => {
+notificationsRouter.put('/:id/read', authenticateUser, async (req: Request, res: Response) => {
   try {
-    const updated = db.markNotificationAsRead(req.params.id);
-    res.json({ success: updated });
+    await firestore.collection('notifications').doc(req.params.id).update({read: true});
+    res.json({ success: true });
   } catch (err: any) {
     res.status(500).json({ error: err.message || 'Failed to mark notification' });
   }
 });
 
 // Mark all read
-notificationsRouter.post('/read-all', authenticateUser, (req: Request, res: Response) => {
+notificationsRouter.post('/read-all', authenticateUser, async (req: Request, res: Response) => {
   try {
-    const user = (req as any).user as User;
-    db.markAllNotificationsRead(user.id);
+    const user = (req as any).user;
+    const notifsSnap = await firestore.collection('notifications').where('userId', '==', user.id).get();
+    const batch = firestore.batch();
+    notifsSnap.docs.forEach(doc => {
+        batch.update(doc.ref, {read: true});
+    });
+    await batch.commit();
     res.json({ success: true });
   } catch (err: any) {
     res.status(500).json({ error: err.message || 'Failed to mark all read' });
