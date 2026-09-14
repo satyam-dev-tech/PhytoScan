@@ -2,6 +2,7 @@ import { Router, Request, Response } from 'express';
 import { firestore } from '../firebase-admin.js';
 import { authenticateUser } from './auth.js';
 import { analyzeCropScanImage, compareScansWithAI } from '../ai/gemini.js';
+import { Crop, CropScan } from '../db.js';
 
 export const scansRouter = Router();
 
@@ -76,9 +77,9 @@ scansRouter.post('/analyze', authenticateUser, async (req: Request, res: Respons
 
     const cropRef = firestore.collection('crops').doc(cropId);
     let cropDoc = await cropRef.get();
-    let crop = cropDoc.data();
+    let crop = cropDoc.data() as Crop | undefined;
 
-    if (!cropDoc.exists || crop.userId !== user.id) {
+    if (!cropDoc.exists || crop?.userId !== user.id) {
       if (cropContext) {
         crop = {
           id: cropId,
@@ -102,17 +103,17 @@ scansRouter.post('/analyze', authenticateUser, async (req: Request, res: Respons
         return res.status(404).json({ error: 'Crop not found' });
       }
     } else {
-        crop = {id: cropDoc.id, ...crop};
+        crop = {id: cropDoc.id, ...crop} as Crop;
     }
 
     // Retrieve historical context for this crop
     const previousScans = (Array.isArray(clientScans) && clientScans.length > 0)
       ? clientScans
-      : (await firestore.collection('scans').where('cropId', '==', crop.id).orderBy('timestamp', 'desc').limit(10).get()).docs.map(d => d.data());
+      : (await firestore.collection('scans').where('cropId', '==', crop.id).orderBy('timestamp', 'desc').limit(10).get()).docs.map(d => ({id: d.id, ...d.data()} as CropScan));
       
     const recentRisks = (Array.isArray(clientRisks) && clientRisks.length > 0)
       ? clientRisks
-      : (await firestore.collection('riskEvents').where('cropId', '==', crop.id).where('resolved', '==', false).get()).docs.map(d => d.data());
+      : (await firestore.collection('riskEvents').where('cropId', '==', crop!.id).where('resolved', '==', false).get()).docs.map(d => ({id: d.id, ...d.data()}));
 
     // Google/Firebase compatible persistent image storage
     const normalizedMime = mimeType || 'image/jpeg';
@@ -166,13 +167,13 @@ scansRouter.post('/save', authenticateUser, async (req: Request, res: Response) 
 
     const cropRef = firestore.collection('crops').doc(cropId);
     let cropDoc = await cropRef.get();
-    let crop = cropDoc.data();
+    let cropData = cropDoc.data() as Crop | undefined;
 
-    if (!cropDoc.exists || crop?.userId !== user.id) {
+    if (!cropDoc.exists || cropData?.userId !== user.id) {
        // ... (handle cropContext as before if needed, but maybe just return 404 for now to simplify)
        return res.status(404).json({ error: 'Crop not found' });
     }
-    crop = {id: cropDoc.id, ...crop};
+    const crop = {id: cropDoc.id, ...cropData};
 
     const batch = firestore.batch();
 
@@ -290,8 +291,8 @@ scansRouter.post('/compare', authenticateUser, async (req: Request, res: Respons
         return res.status(404).json({ error: 'One or both scans not found' });
     }
     
-    const prevScan = {id: prevScanDoc.id, ...prevScanDoc.data()};
-    const currScan = {id: currScanDoc.id, ...currScanDoc.data()};
+    const prevScan = {id: prevScanDoc.id, ...prevScanDoc.data()} as CropScan;
+    const currScan = {id: currScanDoc.id, ...currScanDoc.data()} as CropScan;
     
     if (prevScan.userId !== user.id || currScan.userId !== user.id) {
       return res.status(404).json({ error: 'One or both scans not found' });
@@ -301,7 +302,7 @@ scansRouter.post('/compare', authenticateUser, async (req: Request, res: Respons
     if (!cropDoc.exists) {
       return res.status(404).json({ error: 'Crop not found' });
     }
-    const crop = {id: cropDoc.id, ...cropDoc.data()};
+    const crop = {id: cropDoc.id, ...cropDoc.data()} as Crop;
 
     const comparison = await compareScansWithAI(prevScan, currScan, crop);
 

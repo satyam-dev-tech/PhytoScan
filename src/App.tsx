@@ -37,6 +37,7 @@ const MainApp: React.FC = () => {
   useEffect(() => {
     if (!isLoading) {
       if (isAuthenticated) {
+        runDiagnostic();
         if (user && !user.onboarded && !isRestoring) {
           setIsOnboardingOpen(true);
         }

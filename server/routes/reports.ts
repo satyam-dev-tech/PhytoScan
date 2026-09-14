@@ -1,6 +1,7 @@
 import { Router, Request, Response } from 'express';
 import { firestore } from '../firebase-admin.js';
 import { authenticateUser } from './auth.js';
+import { Crop } from '../db.js';
 
 export const reportsRouter = Router();
 
@@ -42,17 +43,17 @@ reportsRouter.post('/generate', authenticateUser, async (req: Request, res: Resp
     }
 
     const cropDoc = await firestore.collection('crops').doc(cropId).get();
-    const crop = cropDoc.data();
-    if (!cropDoc.exists || crop?.userId !== user.id) {
+    const cropData = cropDoc.data() as Crop | undefined;
+    if (!cropDoc.exists || cropData?.userId !== user.id) {
       return res.status(404).json({ error: 'Crop not found' });
     }
-    const cropData = {id: cropDoc.id, ...crop};
+    const cropWithId = {id: cropDoc.id, ...cropData};
 
-    const farmDoc = await firestore.collection('farms').doc(cropData.farmId).get();
-    const scansSnap = await firestore.collection('scans').where('cropId', '==', cropData.id).orderBy('timestamp', 'desc').get();
+    const farmDoc = await firestore.collection('farms').doc(cropWithId.farmId).get();
+    const scansSnap = await firestore.collection('scans').where('cropId', '==', cropWithId.id).orderBy('timestamp', 'desc').get();
     const scans = scansSnap.docs.map(doc => doc.data());
     
-    const risksSnap = await firestore.collection('riskEvents').where('cropId', '==', cropData.id).get();
+    const risksSnap = await firestore.collection('riskEvents').where('cropId', '==', cropWithId.id).get();
     const risks = risksSnap.docs.map(doc => doc.data());
 
     let dateRange = 'Current Assessment';
@@ -91,15 +92,15 @@ reportsRouter.post('/generate', authenticateUser, async (req: Request, res: Resp
     const reportId = 'rep_' + Math.random().toString(36).slice(2, 14);
     const reportData = {
       userId: user.id,
-      cropId: cropData.id,
-      cropName: cropData.name,
+      cropId: cropWithId.id,
+      cropName: cropWithId.name,
       farmName: farmDoc.data()?.name || 'Primary Farm',
       farmerName: user.name,
-      title: `Phytoscan Comprehensive Health Intelligence Report — ${cropData.name}`,
+      title: `Phytoscan Comprehensive Health Intelligence Report — ${cropWithId.name}`,
       dateRange,
-      healthScore: cropData.currentHealthScore,
+      healthScore: cropWithId.currentHealthScore,
       healthTrend,
-      summary: `Automated diagnostic summary generated from ${scans.length} historical image scans. Current health score is ${cropData.currentHealthScore}/100 with overall risk categorized as ${cropData.currentRiskLevel.toUpperCase()}.`,
+      summary: `Automated diagnostic summary generated from ${scans.length} historical image scans. Current health score is ${cropWithId.currentHealthScore}/100 with overall risk categorized as ${cropWithId.currentRiskLevel.toUpperCase()}.`,
       observations,
       risks: risksList,
       recommendations,

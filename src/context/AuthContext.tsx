@@ -169,6 +169,13 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     try {
       const cred = await signInWithEmailAndPassword(auth, email, pass);
       await syncUserSession(cred.user);
+    } catch (err: any) {
+      if (err.code === 'auth/operation-not-allowed') {
+        throw new Error('Email/Password sign-in is not enabled for this project.');
+      } else if (err.code === 'auth/invalid-credential') {
+        throw new Error('Invalid email or password.');
+      }
+      throw err;
     } finally {
       setIsLoading(false);
     }
@@ -182,6 +189,11 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
         await updateProfile(cred.user, { displayName: name });
       }
       await syncUserSession(cred.user, name, lang);
+    } catch (err: any) {
+      if (err.code === 'auth/operation-not-allowed') {
+        throw new Error('Registration is not enabled for this project.');
+      }
+      throw err;
     } finally {
       setIsLoading(false);
     }
@@ -198,6 +210,8 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
         throw new Error('Google Sign-In popup was blocked by your browser. Please allow popups or use Email/Password sign-in.');
       } else if (popupErr.code === 'auth/popup-closed-by-user') {
         throw new Error('Sign-In popup was closed before completing.');
+      } else if (popupErr.code === 'auth/unauthorized-domain') {
+        throw new Error('This domain is not authorized for Google Sign-In.');
       }
       throw popupErr;
     } finally {
