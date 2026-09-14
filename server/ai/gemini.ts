@@ -1,15 +1,26 @@
 import { GoogleGenAI, Type } from '@google/genai';
 import { Crop, CropScan, RiskEvent } from '../db.js';
 
-// Initialize Gemini client strictly with User-Agent header as required by skill
-const ai = new GoogleGenAI({
-  apiKey: process.env.GEMINI_API_KEY,
-  httpOptions: {
-    headers: {
-      'User-Agent': 'aistudio-build'
+// Lazy initialize Gemini client strictly with User-Agent header as required by skill
+let aiClient: GoogleGenAI | null = null;
+
+function getAi(): GoogleGenAI {
+  if (!aiClient) {
+    const apiKey = process.env.GEMINI_API_KEY;
+    if (!apiKey) {
+      throw new Error('GEMINI_API_KEY environment variable is not set');
     }
+    aiClient = new GoogleGenAI({
+      apiKey,
+      httpOptions: {
+        headers: {
+          'User-Agent': 'aistudio-build'
+        }
+      }
+    });
   }
-});
+  return aiClient;
+}
 
 // Resilient model cascade: primary model followed by fast, separate-capacity fallbacks
 const MODEL_CANDIDATES = ['gemini-3.8-flash', 'gemini-flash-latest', 'gemini-3.1-flash-lite'];
@@ -226,7 +237,7 @@ ANALYSIS INSTRUCTIONS & MANDATORY COMPLIANCE:
       'analyzeCropScanImage',
       MODEL_CANDIDATES,
       async (modelName) => {
-        const response = await ai.models.generateContent({
+        const response = await getAi().models.generateContent({
           model: modelName,
           contents: [
             {
@@ -549,7 +560,7 @@ GUIDELINES:
       'chatWithCropAssistant',
       MODEL_CANDIDATES,
       async (modelName) => {
-        const response = await ai.models.generateContent({
+        const response = await getAi().models.generateContent({
           model: modelName,
           contents,
           config: {
@@ -678,7 +689,7 @@ Always remember responsible AI uncertainty (state "AI-assisted assessment", "pos
       'runAgentInvestigation',
       MODEL_CANDIDATES,
       async (modelName) => {
-        const res = await ai.models.generateContent({
+        const res = await getAi().models.generateContent({
           model: modelName,
           contents: prompt
         });
@@ -749,7 +760,7 @@ Return as JSON with keys: "comparisonSummary" (string), "keyDifferences" (array 
       'compareScansWithAI',
       MODEL_CANDIDATES,
       async (modelName) => {
-        const res = await ai.models.generateContent({
+        const res = await getAi().models.generateContent({
           model: modelName,
           contents: prompt,
           config: {
