@@ -91,7 +91,7 @@ export const DashboardView: React.FC<DashboardViewProps> = ({
   const isLoading = isRestoring;
 
   return (
-    <div className="p-4 sm:p-6 lg:p-8 max-w-7xl mx-auto space-y-8 animate-in fade-in duration-200">
+    <div className="p-4 sm:p-6 lg:p-8 w-full max-w-7xl mx-auto space-y-8 animate-in fade-in duration-200 overflow-hidden">
       
       {/* Demo Mode Notice Banner (Isolated Sandbox Notification) */}
       {isDemoMode && (
@@ -120,20 +120,20 @@ export const DashboardView: React.FC<DashboardViewProps> = ({
       )}
 
       {/* Top Banner / Greeting Header */}
-      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-2 border-b border-[#2D6A4F]/10">
-        <div>
-          <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-[#40916C]">
-            <span>{currentFarm.name}</span>
+      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-2 border-b border-[#2D6A4F]/10 min-w-0">
+        <div className="min-w-0">
+          <div className="flex flex-wrap items-center gap-2 text-xs font-bold uppercase tracking-wider text-[#40916C]">
+            <span className="truncate max-w-[200px] sm:max-w-none">{currentFarm.name}</span>
             <span>•</span>
-            <span className="flex items-center gap-1">
-              <MapPin className="w-3.5 h-3.5" />
-              {currentFarm.location}
+            <span className="flex items-center gap-1 truncate max-w-[200px] sm:max-w-none">
+              <MapPin className="w-3.5 h-3.5 shrink-0" />
+              <span className="truncate">{currentFarm.location}</span>
             </span>
           </div>
-          <h1 className="font-outfit text-2xl sm:text-3xl font-extrabold text-[#132A13] mt-1">
+          <h1 className="font-outfit text-2xl sm:text-3xl font-extrabold text-[#132A13] mt-1 break-words">
             {totalCrops === 0 ? `Welcome, ${firstName}` : 'Farm Health Intelligence'}
           </h1>
-          <p className="text-sm text-[#52796F] mt-0.5">
+          <p className="text-sm text-[#52796F] mt-0.5 leading-relaxed">
             {totalCrops === 0
               ? 'Welcome to Phytoscan. Register your first crop to establish health memory and track crop vitality.'
               : totalScans === 0
@@ -142,10 +142,10 @@ export const DashboardView: React.FC<DashboardViewProps> = ({
           </p>
         </div>
 
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-2.5 sm:gap-3 w-full sm:w-auto">
           <button
             onClick={onOpenAddCrop}
-            className="px-4 py-2.5 rounded-xl border border-[#2D6A4F]/20 hover:bg-[#F0F4F1] text-[#1B4332] text-sm font-semibold transition-colors flex items-center gap-2"
+            className="flex-1 sm:flex-initial justify-center px-4 py-2.5 rounded-xl border border-[#2D6A4F]/20 hover:bg-[#F0F4F1] text-[#1B4332] text-sm font-semibold transition-colors flex items-center gap-2 active:scale-95"
           >
             <Plus className="w-4 h-4" />
             <span>Add Crop</span>
@@ -153,7 +153,7 @@ export const DashboardView: React.FC<DashboardViewProps> = ({
 
           <button
             onClick={() => onNavigate('scan')}
-            className="px-4 py-2.5 rounded-xl bg-[#2D6A4F] hover:bg-[#1B4332] text-white text-sm font-bold shadow-md shadow-[#2D6A4F]/20 transition-all flex items-center gap-2 active:scale-95"
+            className="flex-1 sm:flex-initial justify-center px-4 py-2.5 rounded-xl bg-[#2D6A4F] hover:bg-[#1B4332] text-white text-sm font-bold shadow-md shadow-[#2D6A4F]/20 transition-all flex items-center gap-2 active:scale-95"
           >
             <Scan className="w-4 h-4 text-[#74C69D]" />
             <span>New Scan</span>
@@ -163,29 +163,29 @@ export const DashboardView: React.FC<DashboardViewProps> = ({
 
       {/* Zero Crops State: Prominent Welcome & Quickstart Hero Card */}
       {totalCrops === 0 && !isLoading && (
-        <div className="p-6 sm:p-8 rounded-3xl bg-gradient-to-br from-[#1B4332] via-[#2D6A4F] to-[#40916C] text-white shadow-lg relative overflow-hidden">
+        <div className="p-5 sm:p-8 rounded-3xl bg-gradient-to-br from-[#1B4332] via-[#2D6A4F] to-[#40916C] text-white shadow-lg relative overflow-hidden min-w-0">
           <div className="absolute -right-10 -bottom-10 w-48 h-48 rounded-full bg-emerald-400/10 blur-2xl pointer-events-none" />
           <div className="relative z-10 max-w-2xl space-y-4">
             <span className="px-3 py-1 rounded-full bg-white/15 text-[#D8F3DC] text-[11px] font-bold uppercase tracking-wider backdrop-blur-sm inline-block">
               Getting Started
             </span>
-            <h2 className="font-outfit text-2xl sm:text-3xl font-extrabold text-white">
+            <h2 className="font-outfit text-xl sm:text-2xl lg:text-3xl font-extrabold text-white break-words">
               Welcome to Phytoscan, {firstName}
             </h2>
             <p className="text-sm text-[#D8F3DC] leading-relaxed">
               Your crop intelligence journey starts with your first crop. Register your field to track health memory, detect diseases early, and analyze trends over time.
             </p>
-            <div className="flex flex-wrap items-center gap-3 pt-2">
+            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2.5 pt-2">
               <button
                 onClick={onOpenAddCrop}
-                className="px-5 py-2.5 rounded-xl bg-white hover:bg-[#F8FAF8] text-[#1B4332] font-bold text-sm shadow-md transition-all flex items-center gap-2 active:scale-95"
+                className="w-full sm:w-auto justify-center px-5 py-2.5 rounded-xl bg-white hover:bg-[#F8FAF8] text-[#1B4332] font-bold text-sm shadow-md transition-all flex items-center gap-2 active:scale-95"
               >
                 <Plus className="w-4 h-4 text-[#2D6A4F]" />
                 <span>Add Your First Crop</span>
               </button>
               <button
                 onClick={() => onNavigate('scan')}
-                className="px-5 py-2.5 rounded-xl bg-black/20 hover:bg-black/30 text-white font-semibold text-sm border border-white/20 transition-colors flex items-center gap-2"
+                className="w-full sm:w-auto justify-center px-5 py-2.5 rounded-xl bg-black/20 hover:bg-black/30 text-white font-semibold text-sm border border-white/20 transition-colors flex items-center gap-2"
               >
                 <Scan className="w-4 h-4 text-[#74C69D]" />
                 <span>Scan Your First Crop</span>
@@ -197,12 +197,12 @@ export const DashboardView: React.FC<DashboardViewProps> = ({
 
       {/* State 2 Banner: Crop registered, but zero scans recorded yet */}
       {totalCrops > 0 && totalScans === 0 && (
-        <div className="p-5 rounded-2xl bg-[#E8F5E9] border border-[#2D6A4F]/20 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
-          <div className="flex items-center gap-3">
+        <div className="p-4 sm:p-5 rounded-2xl bg-[#E8F5E9] border border-[#2D6A4F]/20 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 min-w-0">
+          <div className="flex items-center gap-3 min-w-0">
             <div className="w-10 h-10 rounded-xl bg-[#2D6A4F] text-white flex items-center justify-center shrink-0">
               <Scan className="w-5 h-5 text-[#74C69D]" />
             </div>
-            <div>
+            <div className="min-w-0">
               <h3 className="font-outfit font-bold text-sm text-[#132A13]">
                 {crops.length === 1 ? `Plot "${crops[0].name}" registered!` : `${crops.length} plots registered!`}
               </h3>
@@ -213,7 +213,7 @@ export const DashboardView: React.FC<DashboardViewProps> = ({
           </div>
           <button
             onClick={() => onNavigate('scan')}
-            className="px-4 py-2 rounded-xl bg-[#2D6A4F] hover:bg-[#1B4332] text-white text-xs font-bold shrink-0 transition-colors flex items-center gap-2 shadow-sm"
+            className="w-full sm:w-auto justify-center px-4 py-2 rounded-xl bg-[#2D6A4F] hover:bg-[#1B4332] text-white text-xs font-bold shrink-0 transition-colors flex items-center gap-2 shadow-sm"
           >
             <Scan className="w-3.5 h-3.5 text-[#74C69D]" />
             <span>Perform Initial Scan</span>
@@ -222,30 +222,30 @@ export const DashboardView: React.FC<DashboardViewProps> = ({
       )}
 
       {/* KPI Cards (Accurate Dynamic Metric Blocks) */}
-      <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+      <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-6 min-w-0">
         
         {/* Metric 1: Overall Farm Health */}
-        <div className="p-5 rounded-3xl bg-white border border-[#2D6A4F]/10 shadow-xs flex flex-col justify-between">
+        <div className="p-3.5 sm:p-5 rounded-2xl sm:rounded-3xl bg-white border border-[#2D6A4F]/10 shadow-xs flex flex-col justify-between min-w-0">
           <div className="flex items-center justify-between">
-            <span className="text-xs font-bold uppercase tracking-wider text-[#52796F]">
+            <span className="text-xs font-bold uppercase tracking-wider text-[#52796F] truncate">
               Overall Health
             </span>
-            <div className="w-8 h-8 rounded-xl bg-[#D8F3DC] text-[#1B4332] flex items-center justify-center">
+            <div className="w-8 h-8 rounded-xl bg-[#D8F3DC] text-[#1B4332] flex items-center justify-center shrink-0">
               <Activity className="w-4 h-4" />
             </div>
           </div>
-          <div className="mt-4">
+          <div className="mt-3 sm:mt-4">
             <div className="flex items-baseline gap-1">
-              <span className="font-outfit text-3xl sm:text-4xl font-extrabold text-[#132A13]">
+              <span className="font-outfit text-2xl sm:text-4xl font-extrabold text-[#132A13]">
                 {overallHealth !== null ? overallHealth : '—'}
               </span>
               {overallHealth !== null && (
-                <span className="text-sm font-medium text-[#52796F]">/100</span>
+                <span className="text-xs sm:text-sm font-medium text-[#52796F]">/100</span>
               )}
             </div>
-            <div className="mt-2 flex items-center gap-1 text-xs text-[#40916C] font-semibold">
-              <span>{overallHealth !== null ? 'Application indicator' : 'Pending initial scan'}</span>
-              <div className="group relative">
+            <div className="mt-1.5 sm:mt-2 flex items-center gap-1 text-[11px] sm:text-xs text-[#40916C] font-semibold">
+              <span className="truncate">{overallHealth !== null ? 'Indicator' : 'Pending scan'}</span>
+              <div className="group relative shrink-0">
                 <HelpCircle className="w-3.5 h-3.5 text-gray-400 cursor-pointer" />
                 <div className="absolute left-1/2 -translate-x-1/2 bottom-full mb-2 hidden group-hover:block w-48 p-2 rounded-lg bg-[#0B2512] text-white text-[10px] leading-tight shadow-lg z-50">
                   Phytoscan Health Score: An AI-assisted application indicator computed from chronological leaf scans and pathology detections.
@@ -256,63 +256,63 @@ export const DashboardView: React.FC<DashboardViewProps> = ({
         </div>
 
         {/* Metric 2: Crops Monitored */}
-        <div className="p-5 rounded-3xl bg-white border border-[#2D6A4F]/10 shadow-xs flex flex-col justify-between">
+        <div className="p-3.5 sm:p-5 rounded-2xl sm:rounded-3xl bg-white border border-[#2D6A4F]/10 shadow-xs flex flex-col justify-between min-w-0">
           <div className="flex items-center justify-between">
-            <span className="text-xs font-bold uppercase tracking-wider text-[#52796F]">
-              Crops Monitored
+            <span className="text-xs font-bold uppercase tracking-wider text-[#52796F] truncate">
+              Monitored
             </span>
-            <div className="w-8 h-8 rounded-xl bg-[#E8F5E9] text-[#2D6A4F] flex items-center justify-center">
+            <div className="w-8 h-8 rounded-xl bg-[#E8F5E9] text-[#2D6A4F] flex items-center justify-center shrink-0">
               <Sprout className="w-4 h-4" />
             </div>
           </div>
-          <div className="mt-4">
-            <span className="font-outfit text-3xl sm:text-4xl font-extrabold text-[#132A13]">
+          <div className="mt-3 sm:mt-4">
+            <span className="font-outfit text-2xl sm:text-4xl font-extrabold text-[#132A13]">
               {totalCrops}
             </span>
-            <p className="mt-2 text-xs text-[#52796F]">
-              {totalCrops > 0 ? 'Active registered plots' : 'No crops added yet'}
+            <p className="mt-1.5 sm:mt-2 text-[11px] sm:text-xs text-[#52796F] truncate">
+              {totalCrops > 0 ? 'Active plots' : 'No crops yet'}
             </p>
           </div>
         </div>
 
         {/* Metric 3: Scans Completed */}
-        <div className="p-5 rounded-3xl bg-white border border-[#2D6A4F]/10 shadow-xs flex flex-col justify-between">
+        <div className="p-3.5 sm:p-5 rounded-2xl sm:rounded-3xl bg-white border border-[#2D6A4F]/10 shadow-xs flex flex-col justify-between min-w-0">
           <div className="flex items-center justify-between">
-            <span className="text-xs font-bold uppercase tracking-wider text-[#52796F]">
-              Scans Recorded
+            <span className="text-xs font-bold uppercase tracking-wider text-[#52796F] truncate">
+              Scans
             </span>
-            <div className="w-8 h-8 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center">
+            <div className="w-8 h-8 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center shrink-0">
               <Scan className="w-4 h-4" />
             </div>
           </div>
-          <div className="mt-4">
+          <div className="mt-3 sm:mt-4">
             <div className="flex items-baseline gap-2">
-              <span className="font-outfit text-3xl sm:text-4xl font-extrabold text-emerald-700">
+              <span className="font-outfit text-2xl sm:text-4xl font-extrabold text-emerald-700">
                 {totalScans}
               </span>
             </div>
-            <p className="mt-2 text-xs text-emerald-600 font-semibold">
-              {totalScans > 0 ? `${cropsWithScans.length} plots evaluated` : 'No scans completed'}
+            <p className="mt-1.5 sm:mt-2 text-[11px] sm:text-xs text-emerald-600 font-semibold truncate">
+              {totalScans > 0 ? `${cropsWithScans.length} plots` : 'No scans yet'}
             </p>
           </div>
         </div>
 
         {/* Metric 4: Active Risks */}
-        <div className="p-5 rounded-3xl bg-white border border-[#2D6A4F]/10 shadow-xs flex flex-col justify-between">
+        <div className="p-3.5 sm:p-5 rounded-2xl sm:rounded-3xl bg-white border border-[#2D6A4F]/10 shadow-xs flex flex-col justify-between min-w-0">
           <div className="flex items-center justify-between">
-            <span className="text-xs font-bold uppercase tracking-wider text-[#52796F]">
+            <span className="text-xs font-bold uppercase tracking-wider text-[#52796F] truncate">
               Active Risks
             </span>
-            <div className="w-8 h-8 rounded-xl bg-amber-50 text-amber-600 flex items-center justify-center">
+            <div className="w-8 h-8 rounded-xl bg-amber-50 text-amber-600 flex items-center justify-center shrink-0">
               <AlertTriangle className="w-4 h-4" />
             </div>
           </div>
-          <div className="mt-4">
-            <span className="font-outfit text-3xl sm:text-4xl font-extrabold text-amber-600">
+          <div className="mt-3 sm:mt-4">
+            <span className="font-outfit text-2xl sm:text-4xl font-extrabold text-amber-600">
               {attentionCrops}
             </span>
-            <p className="mt-2 text-xs text-amber-700 font-semibold">
-              {attentionCrops > 0 ? 'Active risks or declining' : 'No active risks detected'}
+            <p className="mt-1.5 sm:mt-2 text-[11px] sm:text-xs text-amber-700 font-semibold truncate">
+              {attentionCrops > 0 ? 'Action required' : 'No active risks'}
             </p>
           </div>
         </div>
@@ -572,19 +572,19 @@ export const DashboardView: React.FC<DashboardViewProps> = ({
                   </div>
 
                   {/* Bottom Image Info */}
-                  <div className="absolute bottom-3 left-3 right-3 flex items-end justify-between text-white">
-                    <div>
-                      <h3 className="font-outfit text-lg font-bold text-white drop-shadow-md">
+                  <div className="absolute bottom-3 left-3 right-3 flex items-end justify-between gap-2 text-white min-w-0">
+                    <div className="min-w-0 flex-1 pr-1">
+                      <h3 className="font-outfit text-base sm:text-lg font-bold text-white drop-shadow-md break-words line-clamp-2">
                         {crop.name}
                       </h3>
-                      <p className="text-xs text-gray-200 drop-shadow-sm flex items-center gap-1">
-                        <span>{crop.field}</span>
-                        {crop.variety && <span>• {crop.variety}</span>}
+                      <p className="text-xs text-gray-200 drop-shadow-sm flex flex-wrap items-center gap-1 break-words">
+                        <span className="break-words">{crop.field}</span>
+                        {crop.variety && <span className="break-words">• {crop.variety}</span>}
                       </p>
                     </div>
 
                     {/* Phytoscan Health Score Gauge Badge */}
-                    <div className="text-right backdrop-blur-md bg-white/20 px-2.5 py-1.5 rounded-xl border border-white/30">
+                    <div className="text-right backdrop-blur-md bg-white/20 px-2.5 py-1.5 rounded-xl border border-white/30 shrink-0">
                       {hasScans ? (
                         <>
                           <span className="font-outfit text-xl font-extrabold text-white">

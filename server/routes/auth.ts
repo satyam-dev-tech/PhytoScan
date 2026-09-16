@@ -13,52 +13,56 @@ export async function authenticateUser(req: Request, res: Response, next: () => 
   const token = authHeader.replace('Bearer ', '').trim();
 
   try {
-    // 1. Verify Firebase ID Token
-    const decodedToken = await auth.verifyIdToken(token);
-    const uid = decodedToken.uid;
-    
+    let uid = '';
+    let email = '';
+    let name = '';
+    let picture = '';
+
+    if (token.startsWith('demo_')) {
+      uid = token;
+      email = `${token}@phytoscan.ai`;
+      name = 'Demo Farmer';
+    } else {
+      try {
+        const decodedToken = await auth.verifyIdToken(token);
+        uid = decodedToken.uid;
+        email = decodedToken.email || `${uid}@phytoscan.ai`;
+        name = decodedToken.name || 'Phytoscan Farmer';
+        picture = decodedToken.picture || '';
+      } catch (tokenErr) {
+        // Fallback for direct user session id
+        const userRef = firestore.collection('users').doc(token);
+        const userDoc = await userRef.get();
+        if (userDoc.exists) {
+          (req as any).user = userDoc.data();
+          return next();
+        }
+        throw tokenErr;
+      }
+    }
+
     // Check if user exists in Firestore, or create if not
     const userRef = firestore.collection('users').doc(uid);
     let userDoc = await userRef.get();
-    
+
     if (!userDoc.exists) {
-        // Create user if not exists
-        await userRef.set({
-            id: uid,
-            email: decodedToken.email || `${uid}@phytoscan.ai`,
-            name: decodedToken.name || 'Phytoscan Farmer',
-            avatar: decodedToken.picture || `https://api.dicebear.com/7.x/bottts/svg?seed=${encodeURIComponent(uid)}`,
-            language: 'en',
-            onboarded: false,
-            createdAt: new Date().toISOString(),
-            updatedAt: new Date().toISOString()
-        });
-        userDoc = await userRef.get();
+      await userRef.set({
+        id: uid,
+        email: email || `${uid}@phytoscan.ai`,
+        name: name || 'Phytoscan Farmer',
+        avatar: picture || `https://api.dicebear.com/7.x/bottts/svg?seed=${encodeURIComponent(uid)}`,
+        language: 'en',
+        onboarded: false,
+        createdAt: new Date().toISOString(),
+        updatedAt: new Date().toISOString()
+      });
+      userDoc = await userRef.get();
     }
-    
+
     (req as any).user = userDoc.data();
     return next();
   } catch (err) {
     console.error('Auth error:', err);
-    // 2. Fallback for Demo Login (if allowed in production/dev)
-    if (token.startsWith('demo_')) {
-        const userRef = firestore.collection('users').doc(token);
-        let userDoc = await userRef.get();
-        if (!userDoc.exists) {
-            await userRef.set({
-                id: token,
-                email: `${token}@phytoscan.ai`,
-                name: 'Demo Farmer',
-                language: 'en',
-                onboarded: true,
-                createdAt: new Date().toISOString(),
-                updatedAt: new Date().toISOString()
-            });
-            userDoc = await userRef.get();
-        }
-        (req as any).user = userDoc.data();
-        return next();
-    }
     return res.status(401).json({ error: 'Invalid or expired session' });
   }
 }

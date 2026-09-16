@@ -1,1 +1,54 @@
 @import "tailwindcss";
+
+html,
+body,
+#root {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Base Responsive Typography & Safe Word Wrapping */
+h1, h2, h3, h4, h5, h6 {
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  hyphens: manual;
+}
+
+p, span, label, div, a, button {
+  overflow-wrap: break-word;
+}
+
+/* Responsive heading fluid scale overrides for mobile devices */
+@media (max-width: 640px) {
+  h1 {
+    line-height: 1.2;
+  }
+  h2 {
+    line-height: 1.25;
+  }
+  h3 {
+    line-height: 1.3;
+  }
+}
+
+/* Utility class for robust multi-line label & card title wrapping */
+.break-words-safe {
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  word-break: normal;
+  min-width: 0;
+}
+
+.break-anywhere {
+  overflow-wrap: anywhere;
+}

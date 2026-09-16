@@ -59,12 +59,12 @@ export const CropsView: React.FC<CropsViewProps> = ({ onSelectCrop, onOpenAddCro
     <div className="p-4 sm:p-6 lg:p-8 max-w-7xl mx-auto space-y-6">
       
       {/* Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-2 border-b border-[#2D6A4F]/10">
-        <div>
-          <h1 className="font-outfit text-2xl sm:text-3xl font-extrabold text-[#132A13]">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-2 border-b border-[#2D6A4F]/10 min-w-0">
+        <div className="min-w-0">
+          <h1 className="font-outfit text-2xl sm:text-3xl font-extrabold text-[#132A13] break-words">
             Crop Management
           </h1>
-          <p className="text-sm text-[#52796F] mt-0.5">
+          <p className="text-sm text-[#52796F] mt-0.5 break-words">
             Monitor plots, examine individual health memory, and schedule scans.
           </p>
         </div>
@@ -160,18 +160,18 @@ export const CropsView: React.FC<CropsViewProps> = ({ onSelectCrop, onOpenAddCro
                     </button>
                   </div>
 
-                  <div className="absolute bottom-3 left-3 right-3 flex items-end justify-between text-white">
-                    <div>
-                      <h3 className="font-outfit text-lg font-bold text-white drop-shadow-md">
+                  <div className="absolute bottom-3 left-3 right-3 flex items-end justify-between gap-2 text-white min-w-0">
+                    <div className="min-w-0 flex-1 pr-1">
+                      <h3 className="font-outfit text-base sm:text-lg font-bold text-white drop-shadow-md break-words line-clamp-2">
                         {crop.name}
                       </h3>
-                      <p className="text-xs text-gray-200 flex items-center gap-1">
-                        <span>{crop.field}</span>
-                        {crop.variety && <span>• {crop.variety}</span>}
+                      <p className="text-xs text-gray-200 flex flex-wrap items-center gap-1 drop-shadow-xs break-words">
+                        <span className="break-words">{crop.field}</span>
+                        {crop.variety && <span className="break-words">• {crop.variety}</span>}
                       </p>
                     </div>
 
-                    <div className="text-right backdrop-blur-md bg-white/20 px-2.5 py-1.5 rounded-xl border border-white/30">
+                    <div className="text-right backdrop-blur-md bg-white/20 px-2.5 py-1.5 rounded-xl border border-white/30 shrink-0">
                       {(crop.totalScans || 0) > 0 ? (
                         <>
                           <span className="font-outfit text-xl font-extrabold text-white">

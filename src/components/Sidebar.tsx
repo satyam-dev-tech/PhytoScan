@@ -1,15 +1,8 @@
 import React from 'react';
-import {
-  LayoutDashboard,
-  Sprout,
-  Scan,
-  MessageSquare,
-  Bot,
-  AlertTriangle,
-  FileText
-} from 'lucide-react';
+import { LayoutDashboard, AlertTriangle, FileText, Sprout, Scan, MessageSquare, Bot } from 'lucide-react';
 import { ViewState } from '../types';
 import { useAuth } from '../context/AuthContext';
+import { MobileBottomNav } from './MobileBottomNav';
 
 interface SidebarProps {
   currentView: ViewState;
@@ -103,47 +96,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ currentView, onNavigate }) => 
         </div>
       </aside>
 
-      {/* Mobile Bottom Navigation Bar */}
-      <nav className="lg:hidden fixed bottom-0 left-0 right-0 z-40 bg-white/95 backdrop-blur-lg border-t border-[#2D6A4F]/15 px-2 py-1.5 flex items-center justify-around shadow-lg shadow-black/5">
-        {[
-          { id: 'dashboard' as ViewState, label: 'Home', icon: LayoutDashboard },
-          { id: 'crops' as ViewState, label: 'Crops', icon: Sprout },
-          { id: 'scan' as ViewState, label: 'Scan', icon: Scan, isCenter: true },
-          { id: 'assistant' as ViewState, label: 'Assistant', icon: MessageSquare },
-          { id: 'agent' as ViewState, label: 'Agent', icon: Bot }
-        ].map(item => {
-          const Icon = item.icon;
-          const isActive = currentView === item.id || (item.id === 'crops' && currentView === 'crop-detail');
-
-          if (item.isCenter) {
-            return (
-              <button
-                key={item.id}
-                onClick={() => onNavigate(item.id)}
-                className="-mt-5 flex flex-col items-center group focus:outline-none"
-              >
-                <div className="w-12 h-12 rounded-full bg-gradient-to-tr from-[#1B4332] to-[#2D6A4F] text-white flex items-center justify-center shadow-lg shadow-[#1B4332]/35 border-2 border-white group-active:scale-95 transition-transform">
-                  <Scan className="w-6 h-6 text-[#74C69D]" />
-                </div>
-                <span className="text-[10px] font-bold text-[#1B4332] mt-0.5">Scan</span>
-              </button>
-            );
-          }
-
-          return (
-            <button
-              key={item.id}
-              onClick={() => onNavigate(item.id)}
-              className={`flex flex-col items-center py-1 px-2.5 rounded-xl transition-colors ${
-                isActive ? 'text-[#1B4332] font-bold' : 'text-[#52796F] hover:text-[#1B4332]'
-              }`}
-            >
-              <Icon className="w-5 h-5" />
-              <span className="text-[10px] mt-0.5">{item.label}</span>
-            </button>
-          );
-        })}
-      </nav>
+      <MobileBottomNav currentView={currentView} onNavigate={onNavigate} />
     </>
   );
 };

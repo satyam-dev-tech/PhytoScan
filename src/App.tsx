@@ -37,7 +37,6 @@ const MainApp: React.FC = () => {
   useEffect(() => {
     if (!isLoading) {
       if (isAuthenticated) {
-        runDiagnostic();
         if (user && !user.onboarded && !isRestoring) {
           setIsOnboardingOpen(true);
         }
@@ -142,7 +141,7 @@ const MainApp: React.FC = () => {
           <Sidebar currentView={currentView} onNavigate={setCurrentView} />
 
           {/* Main Viewport Content Area */}
-          <main className="flex-1 overflow-y-auto pb-20 lg:pb-8">
+          <main className="flex-1 w-full overflow-y-auto overflow-x-hidden pb-32 sm:pb-36 lg:pb-8">
             {currentView === 'dashboard' && (
               <DashboardView
                 onNavigate={setCurrentView}

@@ -82,15 +82,15 @@ export const ReportsView: React.FC<ReportsViewProps> = ({
     <div className="p-4 sm:p-6 lg:p-8 max-w-7xl mx-auto space-y-6 animate-in fade-in duration-200">
       
       {/* Header & Generator Toolbar */}
-      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-4 border-b border-[#2D6A4F]/10">
-        <div>
-          <span className="px-2.5 py-0.5 rounded-full bg-[#E8F5E9] text-[#1B4332] text-[10px] font-bold uppercase tracking-wider">
+      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-4 border-b border-[#2D6A4F]/10 min-w-0">
+        <div className="min-w-0">
+          <span className="px-2.5 py-0.5 rounded-full bg-[#E8F5E9] text-[#1B4332] text-[10px] font-bold uppercase tracking-wider inline-block">
             Diagnostic Documentation
           </span>
-          <h1 className="font-outfit text-2xl sm:text-3xl font-extrabold text-[#132A13] mt-1">
+          <h1 className="font-outfit text-xl sm:text-2xl lg:text-3xl font-extrabold text-[#132A13] mt-1 break-words">
             Crop Health Intelligence Reports
           </h1>
-          <p className="text-sm text-[#52796F] mt-0.5">
+          <p className="text-sm text-[#52796F] mt-0.5 break-words">
             Synthesized field health dossiers compiled from chronological image scans and risk models.
           </p>
         </div>
@@ -175,23 +175,23 @@ export const ReportsView: React.FC<ReportsViewProps> = ({
             <div className="bg-white rounded-3xl border border-[#2D6A4F]/20 shadow-xl p-6 sm:p-10 space-y-8 print:p-0 print:border-none print:shadow-none">
               
               {/* Report Header Bar */}
-              <div className="flex items-start justify-between border-b border-gray-200 pb-6">
-                <div>
+              <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-4 border-b border-gray-200 pb-6 min-w-0">
+                <div className="min-w-0 flex-1">
                   <div className="flex items-center gap-3">
                     <Logo size="sm" showTagline={false} />
-                    <span className="px-2 py-0.5 text-[9px] font-bold uppercase tracking-wider bg-[#1B4332] text-white rounded">
+                    <span className="px-2 py-0.5 text-[9px] font-bold uppercase tracking-wider bg-[#1B4332] text-white rounded shrink-0">
                       Field Dossier
                     </span>
                   </div>
-                  <h2 className="font-outfit text-2xl font-bold text-[#132A13] mt-2">
+                  <h2 className="font-outfit text-xl sm:text-2xl font-bold text-[#132A13] mt-2 break-words">
                     {activeReport.title}
                   </h2>
-                  <p className="text-xs text-[#52796F] mt-1">
+                  <p className="text-xs text-[#52796F] mt-1 break-words">
                     Surveillance Period: <strong>{activeReport.dateRange}</strong>
                   </p>
                 </div>
 
-                <div className="flex items-center gap-2 print:hidden">
+                <div className="flex items-center gap-2 print:hidden shrink-0">
                   <button
                     onClick={handlePrint}
                     className="px-3.5 py-2 rounded-xl border border-gray-200 hover:bg-gray-50 text-[#132A13] text-xs font-semibold flex items-center gap-1.5 transition-colors shadow-2xs"
@@ -203,14 +203,14 @@ export const ReportsView: React.FC<ReportsViewProps> = ({
               </div>
 
               {/* Farmer & Farm Meta */}
-              <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 p-4 rounded-2xl bg-[#F8FAF8] border border-gray-100 text-xs">
-                <div>
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 p-4 rounded-2xl bg-[#F8FAF8] border border-gray-100 text-xs min-w-0">
+                <div className="min-w-0">
                   <span className="text-[10px] uppercase font-bold text-gray-400 block">Farmer / Operator</span>
-                  <span className="font-semibold text-[#132A13]">{activeReport.farmerName}</span>
+                  <span className="font-semibold text-[#132A13] break-words">{activeReport.farmerName}</span>
                 </div>
-                <div>
+                <div className="min-w-0">
                   <span className="text-[10px] uppercase font-bold text-gray-400 block">Farm Name</span>
-                  <span className="font-semibold text-[#132A13]">{activeReport.farmName}</span>
+                  <span className="font-semibold text-[#132A13] break-words">{activeReport.farmName}</span>
                 </div>
                 <div>
                   <span className="text-[10px] uppercase font-bold text-gray-400 block">Health Indicator</span>

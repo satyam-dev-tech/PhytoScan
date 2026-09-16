@@ -342,7 +342,7 @@ export const ScanView: React.FC<ScanViewProps> = ({
   };
 
   return (
-    <div id="scan-view-container" className="p-4 sm:p-6 lg:p-8 max-w-5xl mx-auto space-y-6">
+    <div id="scan-view-container" className="p-3 sm:p-6 lg:p-8 w-full max-w-5xl mx-auto space-y-6 min-w-0 overflow-hidden">
       
       {/* Header */}
       <div id="scan-header" className="border-b border-[#2D6A4F]/10 pb-4">
@@ -625,16 +625,16 @@ export const ScanView: React.FC<ScanViewProps> = ({
 
       {/* Section 12: Handle Unusable Images */}
       {analysisResult && analysisResult.analysis.imageQuality && !analysisResult.analysis.imageQuality.usable && (
-        <div id="unusable-image-warning" className="p-6 sm:p-8 rounded-3xl bg-amber-50/90 border-2 border-amber-300 shadow-xl space-y-5 animate-in slide-in-from-bottom-4">
-          <div className="flex items-start gap-3.5">
+        <div id="unusable-image-warning" className="p-4 sm:p-6 lg:p-8 rounded-3xl bg-amber-50/90 border-2 border-amber-300 shadow-xl space-y-5 animate-in slide-in-from-bottom-4 min-w-0">
+          <div className="flex items-start gap-3.5 min-w-0">
             <div className="w-10 h-10 rounded-2xl bg-amber-200 text-amber-900 flex items-center justify-center shrink-0">
               <AlertTriangle className="w-5 h-5 text-amber-800" />
             </div>
-            <div>
-              <h3 className="font-outfit text-lg font-extrabold text-amber-950">
+            <div className="min-w-0 flex-1">
+              <h3 className="font-outfit text-base sm:text-lg font-extrabold text-amber-950 break-words">
                 Image Quality Insufficient for Diagnosis
               </h3>
-              <p className="text-xs text-amber-800 mt-1">
+              <p className="text-xs text-amber-800 mt-1 break-words">
                 The AI vision engine detected quality barriers that prevent responsible agronomic evaluation.
               </p>
             </div>
@@ -696,33 +696,33 @@ export const ScanView: React.FC<ScanViewProps> = ({
 
       {/* Section 11: Complete Scan Result UI */}
       {analysisResult && (!analysisResult.analysis.imageQuality || analysisResult.analysis.imageQuality.usable) && (
-        <div id="scan-result-card" className="p-6 sm:p-8 rounded-3xl bg-white border border-[#2D6A4F]/20 shadow-xl space-y-6 animate-in slide-in-from-bottom-4 duration-300">
+        <div id="scan-result-card" className="p-4 sm:p-6 lg:p-8 rounded-3xl bg-white border border-[#2D6A4F]/20 shadow-xl space-y-6 animate-in slide-in-from-bottom-4 duration-300 min-w-0">
           
           {/* Responsible AI Banner */}
-          <div className="p-4 rounded-2xl bg-[#F8FAF8] border border-[#2D6A4F]/20 text-[#1B4332] flex items-start gap-3 text-xs">
+          <div className="p-4 rounded-2xl bg-[#F8FAF8] border border-[#2D6A4F]/20 text-[#1B4332] flex items-start gap-3 text-xs min-w-0">
             <Info className="w-4 h-4 text-[#2D6A4F] shrink-0 mt-0.5" />
-            <div>
+            <div className="min-w-0 flex-1">
               <span className="font-bold">Responsible AI Assessment: </span>
-              <span>
+              <span className="break-words">
                 AI-assisted assessment based on visual indicators. Field confirmation recommended. Not a substitute for certified laboratory tissue assay.
               </span>
             </div>
           </div>
 
           {/* Top Bar: Crop Name & Field */}
-          <div className="flex flex-wrap items-center justify-between gap-3 pb-4 border-b border-gray-100">
-            <div>
-              <span className="px-2.5 py-0.5 rounded-full bg-[#E8F5E9] text-[#1B4332] text-[10px] font-bold uppercase tracking-wider">
+          <div className="flex flex-wrap items-center justify-between gap-3 pb-4 border-b border-gray-100 min-w-0">
+            <div className="min-w-0 flex-1">
+              <span className="px-2.5 py-0.5 rounded-full bg-[#E8F5E9] text-[#1B4332] text-[10px] font-bold uppercase tracking-wider inline-block">
                 {selectedCrop?.cropType || 'Crop'} Assessment
               </span>
-              <h2 className="font-outfit text-xl sm:text-2xl font-black text-[#132A13] mt-1">
-                {selectedCrop?.name} <span className="text-[#52796F] font-normal text-base">• {selectedCrop?.field}</span>
+              <h2 className="font-outfit text-lg sm:text-xl lg:text-2xl font-black text-[#132A13] mt-1 break-words">
+                {selectedCrop?.name} <span className="text-[#52796F] font-normal text-sm sm:text-base">• {selectedCrop?.field}</span>
               </h2>
             </div>
 
             {/* Score Delta Indicator */}
             {analysisResult.analysis.scoreDelta !== undefined ? (
-              <div className={`px-3 py-1.5 rounded-xl text-xs font-bold flex items-center gap-1.5 ${
+              <div className={`px-3 py-1.5 rounded-xl text-xs font-bold flex items-center gap-1.5 shrink-0 ${
                 analysisResult.analysis.scoreDelta > 0 ? 'bg-emerald-50 text-emerald-700 border border-emerald-200' :
                 analysisResult.analysis.scoreDelta < 0 ? 'bg-rose-50 text-rose-700 border border-rose-200' :
                 'bg-gray-50 text-gray-700 border border-gray-200'
@@ -745,17 +745,17 @@ export const ScanView: React.FC<ScanViewProps> = ({
                 )}
               </div>
             ) : (
-              <span className="px-3 py-1 rounded-xl bg-blue-50 text-blue-700 text-xs font-semibold border border-blue-100">
+              <span className="px-3 py-1 rounded-xl bg-blue-50 text-blue-700 text-xs font-semibold border border-blue-100 shrink-0">
                 Baseline Plot Scan
               </span>
             )}
           </div>
 
           {/* Condition, Confidence, and Health Score Gauge */}
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 items-center">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 items-center min-w-0">
             
-            <div className="sm:col-span-2 space-y-2">
-              <div className="flex items-center gap-2">
+            <div className="sm:col-span-2 space-y-2 min-w-0">
+              <div className="flex flex-wrap items-center gap-2">
                 <span
                   className={`px-2.5 py-0.5 rounded-md text-[10px] font-black uppercase tracking-wider ${
                     analysisResult.analysis.severity === 'critical' ? 'bg-rose-600 text-white' :
@@ -772,7 +772,7 @@ export const ScanView: React.FC<ScanViewProps> = ({
                 </span>
               </div>
 
-              <h3 className="font-outfit text-2xl font-extrabold text-[#132A13]">
+              <h3 className="font-outfit text-xl sm:text-2xl font-extrabold text-[#132A13] break-words">
                 {analysisResult.analysis.primaryCondition}
               </h3>
 

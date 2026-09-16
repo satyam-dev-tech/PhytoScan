@@ -297,7 +297,7 @@ export const LandingPage: React.FC<LandingPageProps> = ({
               </div>
 
               {/* Headline */}
-              <h1 className="font-outfit text-4xl sm:text-5xl lg:text-[3.5rem] xl:text-6xl font-extrabold tracking-tight text-[#132A13] leading-[1.12]">
+              <h1 className="font-outfit text-3xl sm:text-5xl lg:text-[3.5rem] xl:text-6xl font-extrabold tracking-tight text-[#132A13] leading-[1.12] break-words">
                 Know Your Crop <br />
                 Before It Becomes <br />
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#2D6A4F] via-[#1B4332] to-[#40916C]">
@@ -594,7 +594,7 @@ export const LandingPage: React.FC<LandingPageProps> = ({
             <span className="px-4 py-1.5 rounded-full bg-white/80 backdrop-blur-md text-[#1B4332] text-xs font-bold uppercase tracking-wider border border-[#2D6A4F]/20 shadow-xs">
               Platform Architecture
             </span>
-            <h2 className="font-outfit text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#132A13] tracking-tight leading-tight">
+            <h2 className="font-outfit text-2xl sm:text-4xl lg:text-5xl font-extrabold text-[#132A13] tracking-tight leading-tight break-words">
               More Than a Scanner. <br />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#1B4332] via-[#2D6A4F] to-[#52B788]">
                 A Crop Intelligence Platform.
@@ -870,7 +870,7 @@ export const LandingPage: React.FC<LandingPageProps> = ({
             <span className="px-4 py-1.5 rounded-full bg-[#D8F3DC] text-[#1B4332] text-xs font-bold uppercase tracking-wider border border-[#2D6A4F]/20">
               The Breakthrough Advantage
             </span>
-            <h2 className="font-outfit text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#132A13] tracking-tight">
+            <h2 className="font-outfit text-2xl sm:text-4xl lg:text-5xl font-extrabold text-[#132A13] tracking-tight break-words">
               Your Crop Has a History. <br />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#1B4332] via-[#2D6A4F] to-[#52B788]">
                 Phytoscan Remembers It.
@@ -882,16 +882,16 @@ export const LandingPage: React.FC<LandingPageProps> = ({
           </div>
 
           {/* Detailed Timeline Visualization Showcase */}
-          <div className="backdrop-blur-2xl bg-white/80 border border-white/90 shadow-[0_20px_50px_rgba(11,37,18,0.06)] rounded-[2.5rem] p-6 sm:p-10 lg:p-12">
+          <div className="backdrop-blur-2xl bg-white/80 border border-white/90 shadow-[0_20px_50px_rgba(11,37,18,0.06)] rounded-[2.5rem] p-5 sm:p-10 lg:p-12 min-w-0">
             
             {/* Top Crop Overview Bar */}
-            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-8 border-b border-[#2D6A4F]/10">
-              <div>
-                <div className="flex items-center gap-2">
-                  <h3 className="font-outfit text-2xl font-bold text-[#132A13]">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-8 border-b border-[#2D6A4F]/10 min-w-0">
+              <div className="min-w-0 flex-1">
+                <div className="flex flex-wrap items-center gap-2">
+                  <h3 className="font-outfit text-xl sm:text-2xl font-bold text-[#132A13] break-words">
                     Tomato Field A (Roma VF)
                   </h3>
-                  <span className="px-2.5 py-0.5 rounded-full bg-amber-100 text-amber-800 text-xs font-bold">
+                  <span className="px-2.5 py-0.5 rounded-full bg-amber-100 text-amber-800 text-xs font-bold shrink-0">
                     Active Surveillance Alert
                   </span>
                 </div>
@@ -1023,7 +1023,7 @@ export const LandingPage: React.FC<LandingPageProps> = ({
             <span className="px-3.5 py-1 rounded-full bg-[#D8F3DC] text-[#1B4332] text-xs font-bold uppercase tracking-wider">
               Transparent Access
             </span>
-            <h2 className="font-outfit text-3xl sm:text-4xl font-extrabold text-[#132A13]">
+            <h2 className="font-outfit text-2xl sm:text-3xl lg:text-4xl font-extrabold text-[#132A13] break-words">
               Simple, Accessible AgriTech
             </h2>
             <p className="text-[#52796F] text-base">
@@ -1130,7 +1130,7 @@ export const LandingPage: React.FC<LandingPageProps> = ({
             Our Mission
           </span>
 
-          <h2 className="font-outfit text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white leading-tight">
+          <h2 className="font-outfit text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white leading-tight break-words">
             From Healthier Crops <br />
             <span className="text-[#74C69D]">to Brighter Futures.</span>
           </h2>
@@ -1168,7 +1168,7 @@ export const LandingPage: React.FC<LandingPageProps> = ({
               <span className="px-3 py-1 rounded-full bg-[#D8F3DC] text-[#1B4332] text-xs font-bold uppercase tracking-wider">
                 Get In Touch
               </span>
-              <h2 className="font-outfit text-3xl sm:text-4xl font-extrabold text-[#132A13]">
+              <h2 className="font-outfit text-2xl sm:text-3xl lg:text-4xl font-extrabold text-[#132A13] break-words">
                 Connect with the Phytoscan Agronomy Team
               </h2>
               <p className="text-sm text-[#52796F] leading-relaxed">

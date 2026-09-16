@@ -48,19 +48,19 @@ export const ScanComparisonModal: React.FC<ScanComparisonModalProps> = ({
       <div className="w-full max-w-4xl bg-white rounded-3xl shadow-2xl border border-[#2D6A4F]/20 overflow-hidden flex flex-col max-h-[90vh]">
         
         {/* Header */}
-        <div className="px-6 py-4 bg-[#1B4332] text-white flex items-center justify-between">
-          <div className="flex items-center gap-2.5">
-            <div className="w-8 h-8 rounded-xl bg-white/10 text-[#74C69D] flex items-center justify-center">
+        <div className="px-4 sm:px-6 py-4 bg-[#1B4332] text-white flex items-center justify-between gap-3 min-w-0">
+          <div className="flex items-center gap-2.5 min-w-0 flex-1">
+            <div className="w-8 h-8 rounded-xl bg-white/10 text-[#74C69D] flex items-center justify-center shrink-0">
               <GitCompare className="w-4 h-4" />
             </div>
-            <div>
-              <h3 className="font-outfit text-lg font-bold">Chronological Scan Comparison</h3>
-              <p className="text-xs text-[#D8F3DC]/80">
+            <div className="min-w-0 flex-1">
+              <h3 className="font-outfit text-base sm:text-lg font-bold break-words">Chronological Scan Comparison</h3>
+              <p className="text-xs text-[#D8F3DC]/80 break-words">
                 Evaluating pathological progression between two time points.
               </p>
             </div>
           </div>
-          <button onClick={onClose} className="p-1 rounded-full text-gray-300 hover:text-white">
+          <button onClick={onClose} className="p-1 rounded-full text-gray-300 hover:text-white shrink-0">
             <X className="w-5 h-5" />
           </button>
         </div>
@@ -76,15 +76,15 @@ export const ScanComparisonModal: React.FC<ScanComparisonModalProps> = ({
             Failed to load comparison data.
           </div>
         ) : (
-          <div className="p-6 space-y-6 overflow-y-auto flex-1">
+          <div className="p-4 sm:p-6 space-y-6 overflow-y-auto flex-1 min-w-0">
             
             {/* Score Delta Banner */}
-            <div className="p-4 rounded-2xl bg-[#F8FAF8] border border-[#2D6A4F]/15 flex items-center justify-between">
-              <div>
-                <p className="text-xs font-bold uppercase tracking-wider text-[#52796F]">
+            <div className="p-4 rounded-2xl bg-[#F8FAF8] border border-[#2D6A4F]/15 flex flex-col sm:flex-row sm:items-center justify-between gap-3 min-w-0">
+              <div className="min-w-0 flex-1">
+                <p className="text-xs font-bold uppercase tracking-wider text-[#52796F] break-words">
                   Monitored Crop: {data.crop.name}
                 </p>
-                <p className="font-outfit text-lg font-bold text-[#132A13] mt-0.5">
+                <p className="font-outfit text-base sm:text-lg font-bold text-[#132A13] mt-0.5 break-words">
                   Health Delta: {data.comparison.scoreDiff > 0 ? `+${data.comparison.scoreDiff}` : data.comparison.scoreDiff} Points
                 </p>
               </div>

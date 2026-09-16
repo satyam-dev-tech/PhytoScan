@@ -95,10 +95,10 @@ export const Logo: React.FC<LogoProps> = ({
 
       {/* Typography Wordmark & Badge */}
       {showWordmark && (
-        <div className="flex flex-col justify-center">
+        <div className="flex flex-col justify-center min-w-0">
           <div className="flex items-center gap-1.5 sm:gap-2">
             <span
-              className={`font-outfit font-black ${sizeConfig.title} tracking-tight leading-none ${
+              className={`font-outfit font-black ${sizeConfig.title} tracking-tight leading-none whitespace-nowrap ${
                 isDark ? 'text-white' : 'text-[#132A13]'
               }`}
             >
@@ -108,7 +108,7 @@ export const Logo: React.FC<LogoProps> = ({
               </span>
             </span>
             <span
-              className={`${sizeConfig.badge} font-bold uppercase tracking-wider rounded-md transition-colors ${
+              className={`${sizeConfig.badge} font-bold uppercase tracking-wider rounded-md transition-colors hidden sm:inline-block ${
                 isDark
                   ? 'bg-emerald-500/20 text-emerald-300 border border-emerald-400/30'
                   : 'bg-[#D8F3DC]/95 text-[#1B4332] border border-[#2D6A4F]/20 shadow-xs'
@@ -120,7 +120,7 @@ export const Logo: React.FC<LogoProps> = ({
 
           {showTagline && (
             <span
-              className={`${sizeConfig.tagline} font-medium tracking-wide mt-0.5 leading-none transition-colors ${
+              className={`${sizeConfig.tagline} font-medium tracking-wide mt-0.5 leading-none transition-colors hidden sm:block whitespace-nowrap ${
                 isDark ? 'text-emerald-300/70' : 'text-[#40916C]'
               }`}
             >

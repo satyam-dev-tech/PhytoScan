@@ -149,48 +149,54 @@ export const CropDetailView: React.FC<CropDetailViewProps> = ({
       </button>
 
       {/* Hero Header Card */}
-      <div className="rounded-3xl bg-white border border-[#2D6A4F]/10 shadow-xs overflow-hidden">
-        <div className="grid grid-cols-1 lg:grid-cols-12">
+      <div className="rounded-3xl bg-white border border-[#2D6A4F]/10 shadow-xs overflow-hidden min-w-0">
+        <div className="grid grid-cols-1 lg:grid-cols-12 min-w-0">
           
           {/* Crop Cover Image */}
-          <div className="lg:col-span-4 relative h-64 lg:h-auto min-h-[220px]">
+          <div className="lg:col-span-4 relative h-64 lg:h-auto min-h-[220px] overflow-hidden">
             <img
               src={crop.imageUrl || 'https://images.unsplash.com/photo-1592841200221-a6898f307baa?auto=format&fit=crop&w=800&q=80'}
               alt={crop.name}
               className="w-full h-full object-cover"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
-            <div className="absolute bottom-4 left-4 text-white">
-              <span className="px-2.5 py-0.5 rounded-full bg-white/20 backdrop-blur-md text-[10px] font-bold uppercase tracking-wider">
+            <div className="absolute bottom-4 left-4 right-4 text-white min-w-0">
+              <span className="px-2.5 py-0.5 rounded-full bg-white/20 backdrop-blur-md text-[10px] font-bold uppercase tracking-wider inline-block">
                 {crop.cropType}
               </span>
-              <h2 className="font-outfit text-2xl font-bold mt-1 text-white">{crop.name}</h2>
-              <p className="text-xs text-gray-200">{crop.field} {crop.variety && `• ${crop.variety}`}</p>
+              <h2 className="font-outfit text-xl sm:text-2xl font-bold mt-1 text-white break-words">
+                {crop.name}
+              </h2>
+              <p className="text-xs text-gray-200 break-words mt-0.5">
+                {crop.field} {crop.variety && `• ${crop.variety}`}
+              </p>
             </div>
           </div>
 
           {/* Details & Live Phytoscan Health Score */}
-          <div className="lg:col-span-8 p-6 sm:p-8 flex flex-col justify-between space-y-6">
-            <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-4">
-              <div>
-                <div className="flex items-center gap-2 text-xs text-[#52796F]">
-                  <Calendar className="w-3.5 h-3.5 text-gray-400" />
-                  <span>Planted: {new Date(crop.plantingDate).toLocaleDateString()}</span>
+          <div className="lg:col-span-8 p-5 sm:p-8 flex flex-col justify-between space-y-6 min-w-0">
+            <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-4 min-w-0">
+              <div className="min-w-0 flex-1">
+                <div className="flex flex-wrap items-center gap-2 text-xs text-[#52796F]">
+                  <span className="flex items-center gap-1 shrink-0">
+                    <Calendar className="w-3.5 h-3.5 text-gray-400" />
+                    <span>Planted: {new Date(crop.plantingDate).toLocaleDateString()}</span>
+                  </span>
                   <span>•</span>
-                  <span>{metrics.daysMonitored} Days in Ground</span>
+                  <span className="shrink-0">{metrics.daysMonitored} Days in Ground</span>
                 </div>
                 {crop.notes && (
-                  <p className="text-xs text-[#52796F] mt-2 max-w-xl leading-relaxed">
+                  <p className="text-xs text-[#52796F] mt-2 max-w-xl leading-relaxed break-words">
                     {crop.notes}
                   </p>
                 )}
               </div>
 
               {/* Phytoscan Health Score Gauge */}
-              <div className="flex items-center gap-4 p-4 rounded-2xl bg-[#F8FAF8] border border-[#2D6A4F]/15 shrink-0 self-start">
+              <div className="flex items-center gap-4 p-4 rounded-2xl bg-[#F8FAF8] border border-[#2D6A4F]/15 shrink-0 self-start max-w-full">
                 <div>
                   <div className="flex items-baseline gap-1">
-                    <span className="font-outfit text-4xl font-black text-[#1B4332]">
+                    <span className="font-outfit text-3xl sm:text-4xl font-black text-[#1B4332]">
                       {scans.length > 0 ? crop.currentHealthScore : '—'}
                     </span>
                     {scans.length > 0 && <span className="text-xs text-gray-500 font-bold">/100</span>}
@@ -276,23 +282,23 @@ export const CropDetailView: React.FC<CropDetailViewProps> = ({
       </div>
 
       {/* Section 18: Crop Health Memory Chronological Timeline */}
-      <div className="p-6 rounded-3xl bg-white border border-[#2D6A4F]/10 shadow-xs space-y-6">
-        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
-          <div>
-            <div className="flex items-center gap-2">
-              <h2 className="font-outfit text-lg font-bold text-[#132A13]">
+      <div className="p-4 sm:p-6 rounded-3xl bg-white border border-[#2D6A4F]/10 shadow-xs space-y-6 min-w-0">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 min-w-0">
+          <div className="min-w-0">
+            <div className="flex flex-wrap items-center gap-2">
+              <h2 className="font-outfit text-base sm:text-lg font-bold text-[#132A13] break-words">
                 Crop Health Memory (Sequential Timeline)
               </h2>
-              <span className="px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider bg-[#D8F3DC] text-[#1B4332] rounded-md">
+              <span className="px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider bg-[#D8F3DC] text-[#1B4332] rounded-md shrink-0">
                 {scans.length} Scans Stored
               </span>
             </div>
-            <p className="text-xs text-[#52796F] mt-0.5">
+            <p className="text-xs text-[#52796F] mt-0.5 break-words">
               Every scan is preserved to evaluate progression, symptom onset, and pathogen escalation over time.
             </p>
           </div>
 
-          <span className="text-[11px] text-[#52796F] italic">
+          <span className="text-[11px] text-[#52796F] italic shrink-0">
             Click any entry to examine its detailed diagnosis.
           </span>
         </div>
@@ -381,21 +387,21 @@ export const CropDetailView: React.FC<CropDetailViewProps> = ({
 
       {/* Selected Scan Deep Inspection Card (Section 16 & 17) */}
       {selectedScan && (
-        <div className="p-6 sm:p-8 rounded-3xl bg-white border border-[#2D6A4F]/10 shadow-xs space-y-6">
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-gray-100">
-            <div>
-              <span className="px-2.5 py-0.5 rounded-full bg-[#E8F5E9] text-[#1B4332] text-[10px] font-bold uppercase tracking-wider">
+        <div className="p-5 sm:p-8 rounded-3xl bg-white border border-[#2D6A4F]/10 shadow-xs space-y-6 min-w-0">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-gray-100 min-w-0">
+            <div className="min-w-0 flex-1">
+              <span className="px-2.5 py-0.5 rounded-full bg-[#E8F5E9] text-[#1B4332] text-[10px] font-bold uppercase tracking-wider inline-block">
                 Scan Diagnostic Record
               </span>
-              <h3 className="font-outfit text-xl font-bold text-[#132A13] mt-1">
+              <h3 className="font-outfit text-lg sm:text-xl font-bold text-[#132A13] mt-1 break-words">
                 {selectedScan.condition}
               </h3>
-              <p className="text-xs text-[#52796F]">
+              <p className="text-xs text-[#52796F] break-words mt-0.5">
                 Captured on {new Date(selectedScan.timestamp).toLocaleString()} • Confidence: {Math.round(selectedScan.confidence * 100)}%
               </p>
             </div>
 
-            <div className="flex items-center gap-3">
+            <div className="flex flex-wrap items-center gap-2 sm:gap-3 shrink-0">
               <span
                 className={`px-3 py-1 rounded-xl text-xs font-bold uppercase tracking-wider ${
                   selectedScan.severity === 'critical' ? 'bg-rose-100 text-rose-800' :

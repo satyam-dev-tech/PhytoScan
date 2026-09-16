@@ -77,18 +77,18 @@ export const AiAgentView: React.FC<AiAgentViewProps> = ({
   const selectedCrop = crops.find(c => c.id === selectedCropId);
 
   return (
-    <div className="p-4 sm:p-6 lg:p-8 max-w-5xl mx-auto space-y-6">
+    <div className="p-4 sm:p-6 lg:p-8 w-full max-w-5xl mx-auto space-y-6 overflow-hidden">
       
       {/* Header */}
-      <div className="border-b border-[#2D6A4F]/10 pb-4">
-        <span className="px-2.5 py-0.5 rounded-full bg-[#D8F3DC] text-[#1B4332] text-[10px] font-bold uppercase tracking-wider">
+      <div className="border-b border-[#2D6A4F]/10 pb-4 min-w-0">
+        <span className="px-2.5 py-0.5 rounded-full bg-[#D8F3DC] text-[#1B4332] text-[10px] font-bold uppercase tracking-wider inline-block">
           Autonomous Diagnostics
         </span>
-        <h1 className="font-outfit text-2xl sm:text-3xl font-extrabold text-[#132A13] mt-1 flex items-center gap-2">
+        <h1 className="font-outfit text-xl sm:text-2xl lg:text-3xl font-extrabold text-[#132A13] mt-1 flex flex-wrap items-center gap-2 break-words">
           <span>AI Agent Investigation Engine</span>
-          <Bot className="w-6 h-6 text-[#2D6A4F]" />
+          <Bot className="w-6 h-6 text-[#2D6A4F] shrink-0" />
         </h1>
-        <p className="text-sm text-[#52796F] mt-0.5">
+        <p className="text-sm text-[#52796F] mt-0.5 break-words">
           Dispatches sequential agronomic tools to analyze long-term leaf pathology, score deviations, and pathogen acceleration.
         </p>
       </div>
@@ -183,24 +183,24 @@ export const AiAgentView: React.FC<AiAgentViewProps> = ({
       )}
 
       {currentInvestigation && (
-        <div className="p-6 sm:p-8 rounded-3xl bg-white border border-[#2D6A4F]/20 shadow-xl space-y-6 animate-in slide-in-from-bottom-4 duration-300">
+        <div className="p-4 sm:p-6 lg:p-8 rounded-3xl bg-white border border-[#2D6A4F]/20 shadow-xl space-y-6 animate-in slide-in-from-bottom-4 duration-300 min-w-0">
           
           {/* Top Findings Overview Banner */}
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-gray-100">
-            <div>
-              <span className="px-2.5 py-0.5 rounded-full bg-[#E8F5E9] text-[#1B4332] text-[10px] font-bold uppercase tracking-wider">
+          <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-4 pb-4 border-b border-gray-100 min-w-0">
+            <div className="min-w-0 flex-1">
+              <span className="px-2.5 py-0.5 rounded-full bg-[#E8F5E9] text-[#1B4332] text-[10px] font-bold uppercase tracking-wider inline-block">
                 Investigation Result
               </span>
-              <h3 className="font-outfit text-xl font-bold text-[#132A13] mt-1">
+              <h3 className="font-outfit text-lg sm:text-xl font-bold text-[#132A13] mt-1 break-words">
                 {currentInvestigation.request}
               </h3>
-              <p className="text-xs text-[#52796F]">
+              <p className="text-xs text-[#52796F] break-words">
                 Evaluated {currentInvestigation.metrics.scansEvaluated} scans across {currentInvestigation.metrics.daysSpan} days
               </p>
             </div>
 
             {/* Trajectory Badge */}
-            <div className="p-3.5 rounded-2xl bg-[#F8FAF8] border border-[#2D6A4F]/20 flex items-center gap-3">
+            <div className="p-3.5 rounded-2xl bg-[#F8FAF8] border border-[#2D6A4F]/20 flex items-center gap-3 shrink-0 max-w-full">
               <div>
                 <span className="text-[10px] font-bold text-[#52796F] uppercase block">
                   Trajectory Score

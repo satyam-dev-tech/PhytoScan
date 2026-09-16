@@ -282,27 +282,27 @@ export const AiAssistantView: React.FC<AiAssistantViewProps> = ({ preselectedCro
     <div className="p-4 sm:p-6 max-w-5xl mx-auto h-[calc(100vh-5rem)] flex flex-col gap-4">
       
       {/* Top Context & Language Bar */}
-      <div className="p-4 rounded-2xl bg-white border border-[#2D6A4F]/10 shadow-xs flex flex-wrap items-center justify-between gap-3 shrink-0">
-        <div className="flex items-center gap-2">
-          <div className="w-8 h-8 rounded-xl bg-[#1B4332] text-[#74C69D] flex items-center justify-center">
+      <div className="p-4 rounded-2xl bg-white border border-[#2D6A4F]/10 shadow-xs flex flex-wrap items-center justify-between gap-3 shrink-0 min-w-0">
+        <div className="flex items-center gap-2 min-w-0 flex-1">
+          <div className="w-8 h-8 rounded-xl bg-[#1B4332] text-[#74C69D] flex items-center justify-center shrink-0">
             <Bot className="w-4 h-4" />
           </div>
-          <div>
-            <h2 className="font-outfit text-sm font-bold text-[#132A13]">
+          <div className="min-w-0 flex-1">
+            <h2 className="font-outfit text-sm font-bold text-[#132A13] break-words">
               Phytoscan Agronomy Assistant
             </h2>
-            <p className="text-[11px] text-[#52796F]">
+            <p className="text-[11px] text-[#52796F] break-words">
               Grounded in continuous crop health memory & field surveillance
             </p>
           </div>
         </div>
 
-        <div className="flex items-center gap-2">
+        <div className="flex flex-wrap items-center gap-2 max-w-full">
           {/* Crop Context Picker */}
           <select
             value={selectedCropId}
             onChange={e => setSelectedCropId(e.target.value)}
-            className="px-3 py-1.5 rounded-xl border border-gray-200 text-xs font-semibold outline-none bg-white text-[#132A13]"
+            className="px-3 py-1.5 rounded-xl border border-gray-200 text-xs font-semibold outline-none bg-white text-[#132A13] max-w-full truncate"
           >
             <option value="">All Farm Crops Context</option>
             {crops.map(c => (
@@ -313,7 +313,7 @@ export const AiAssistantView: React.FC<AiAssistantViewProps> = ({ preselectedCro
           </select>
 
           {/* Language Selector */}
-          <div className="flex items-center bg-[#F0F4F1] rounded-xl p-1 text-xs">
+          <div className="flex items-center bg-[#F0F4F1] rounded-xl p-1 text-xs shrink-0">
             {(['en', 'hi', 'bn'] as const).map(l => (
               <button
                 key={l}
@@ -392,7 +392,7 @@ export const AiAssistantView: React.FC<AiAssistantViewProps> = ({ preselectedCro
           return (
             <div
               key={msg.id || i}
-              className={`flex gap-3 max-w-2xl ${isUser ? 'ml-auto flex-row-reverse' : ''}`}
+              className={`flex gap-2.5 sm:gap-3 max-w-2xl min-w-0 ${isUser ? 'ml-auto flex-row-reverse' : ''}`}
             >
               <div
                 className={`w-8 h-8 rounded-xl flex items-center justify-center shrink-0 text-xs font-bold ${
@@ -405,16 +405,16 @@ export const AiAssistantView: React.FC<AiAssistantViewProps> = ({ preselectedCro
               </div>
 
               <div
-                className={`p-4 rounded-2xl text-xs leading-relaxed ${
+                className={`p-4 rounded-2xl text-xs leading-relaxed min-w-0 break-words ${
                   isUser
                     ? 'bg-[#1B4332] text-white rounded-tr-none'
                     : 'bg-[#F8FAF8] text-[#132A13] border border-[#2D6A4F]/10 rounded-tl-none'
                 }`}
               >
                 {isUser ? (
-                  <p>{msg.content}</p>
+                  <p className="break-words">{msg.content}</p>
                 ) : (
-                  <div className="space-y-2">
+                  <div className="space-y-2 min-w-0 break-words">
                     <ReactMarkdown
                       components={{
                         p: ({ node, ...props }) => <p className="mb-2 last:mb-0 leading-relaxed" {...props} />,

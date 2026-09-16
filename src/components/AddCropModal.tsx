@@ -87,17 +87,17 @@ export const AddCropModal: React.FC<AddCropModalProps> = ({ isOpen, onClose, onC
       <div className="w-full max-w-lg bg-white rounded-3xl shadow-2xl border border-[#2D6A4F]/20 overflow-hidden flex flex-col max-h-[90vh]">
         
         {/* Header */}
-        <div className="px-6 py-5 bg-[#1B4332] text-white flex items-center justify-between">
-          <div className="flex items-center gap-2.5">
-            <div className="w-8 h-8 rounded-xl bg-white/10 text-[#74C69D] flex items-center justify-center">
+        <div className="px-4 sm:px-6 py-4 sm:py-5 bg-[#1B4332] text-white flex items-center justify-between gap-3 min-w-0">
+          <div className="flex items-center gap-2.5 min-w-0 flex-1">
+            <div className="w-8 h-8 rounded-xl bg-white/10 text-[#74C69D] flex items-center justify-center shrink-0">
               <Sprout className="w-4 h-4" />
             </div>
-            <div>
-              <h3 className="font-outfit text-lg font-bold">Register Monitored Crop</h3>
-              <p className="text-xs text-[#D8F3DC]/80">Add a plot to build continuous health memory.</p>
+            <div className="min-w-0 flex-1">
+              <h3 className="font-outfit text-base sm:text-lg font-bold break-words">Register Monitored Crop</h3>
+              <p className="text-xs text-[#D8F3DC]/80 break-words">Add a plot to build continuous health memory.</p>
             </div>
           </div>
-          <button onClick={onClose} className="p-1 rounded-full text-gray-300 hover:text-white">
+          <button onClick={onClose} className="p-1 rounded-full text-gray-300 hover:text-white shrink-0">
             <X className="w-5 h-5" />
           </button>
         </div>

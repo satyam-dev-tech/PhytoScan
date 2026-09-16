@@ -86,13 +86,13 @@ export const Navbar: React.FC<NavbarProps> = ({
   };
 
   return (
-    <header className="sticky top-0 z-40 w-full bg-white/85 backdrop-blur-md border-b border-[#2D6A4F]/10 shadow-[0_2px_15px_rgba(11,37,18,0.03)]">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-4">
+    <header className="sticky top-0 z-40 w-full bg-white/85 backdrop-blur-md border-b border-[#2D6A4F]/10 shadow-[0_2px_15px_rgba(11,37,18,0.03)] pt-[env(safe-area-inset-top)]">
+      <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 h-15 sm:h-16 flex items-center justify-between gap-2 sm:gap-4 min-w-0">
         
         {/* Brand */}
         <div 
           onClick={() => onNavigate(isAuthenticated ? 'dashboard' : 'landing')}
-          className="cursor-pointer shrink-0"
+          className="cursor-pointer shrink-0 min-w-0"
           title="Phytoscan Intelligence"
         >
           <Logo size="md" />
@@ -100,7 +100,7 @@ export const Navbar: React.FC<NavbarProps> = ({
 
         {/* Global Search Bar Trigger */}
         {isAuthenticated && (
-          <div className="flex-1 max-w-md hidden md:block">
+          <div className="flex-1 max-w-md hidden md:block min-w-0">
             <button
               onClick={onOpenSearch}
               className="w-full h-10 px-3.5 rounded-xl bg-[#F0F4F1] hover:bg-[#E5ECE7] text-[#52796F] text-sm flex items-center justify-between transition-colors border border-transparent hover:border-[#2D6A4F]/20"
@@ -117,7 +117,7 @@ export const Navbar: React.FC<NavbarProps> = ({
         )}
 
         {/* Right Actions */}
-        <div className="flex items-center gap-2 sm:gap-3">
+        <div className="flex items-center gap-1.5 sm:gap-3 shrink-0">
           {/* Mobile Search Button */}
           {isAuthenticated && (
             <button
@@ -129,33 +129,33 @@ export const Navbar: React.FC<NavbarProps> = ({
             </button>
           )}
 
-          {/* Quick Scan Primary Action */}
+          {/* Quick Scan Primary Action - prominent on tablet/desktop, mobile uses bottom bar */}
           {isAuthenticated ? (
             <button
               onClick={() => onNavigate('scan')}
-              className="flex items-center gap-2 px-3.5 sm:px-4 py-2 rounded-xl bg-gradient-to-r from-[#1B4332] to-[#2D6A4F] hover:from-[#132A13] hover:to-[#1B4332] text-white text-sm font-semibold shadow-md shadow-[#2D6A4F]/25 hover:shadow-lg transition-all active:scale-95"
+              className="hidden sm:flex items-center gap-2 px-3.5 sm:px-4 py-2 rounded-xl bg-gradient-to-r from-[#1B4332] to-[#2D6A4F] hover:from-[#132A13] hover:to-[#1B4332] text-white text-sm font-semibold shadow-md shadow-[#2D6A4F]/25 hover:shadow-lg transition-all active:scale-95"
             >
               <Scan className="w-4 h-4 text-[#74C69D]" />
-              <span className="hidden xs:inline">Scan Crop</span>
+              <span>Scan Crop</span>
             </button>
           ) : (
             <button
               onClick={onOpenAuth}
-              className="flex items-center gap-2 px-4 py-2 rounded-xl bg-[#2D6A4F] hover:bg-[#1B4332] text-white text-sm font-semibold shadow-sm transition-all"
+              className="flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-2 rounded-xl bg-[#2D6A4F] hover:bg-[#1B4332] text-white text-xs sm:text-sm font-semibold shadow-sm transition-all"
             >
               <span>Get Started</span>
             </button>
           )}
 
-          {/* Language Selector */}
-          <div className="relative" ref={langRef}>
+          {/* Language Selector (Tablet & Desktop Header) */}
+          <div className="relative hidden sm:block" ref={langRef}>
             <button
               onClick={() => setShowLangMenu(!showLangMenu)}
               className="p-2 rounded-xl text-[#2D6A4F] hover:bg-[#F0F4F1] transition-colors flex items-center gap-1"
               title="Change Language"
             >
               <Globe className="w-4 h-4" />
-              <span className="text-xs font-semibold uppercase text-[#1B4332] hidden sm:inline">
+              <span className="text-xs font-semibold uppercase text-[#1B4332]">
                 {user?.language || 'en'}
               </span>
             </button>
@@ -203,7 +203,7 @@ export const Navbar: React.FC<NavbarProps> = ({
               </button>
 
               {showNotifications && (
-                <div className="absolute right-0 mt-2 w-80 sm:w-96 bg-white rounded-2xl shadow-2xl border border-[#2D6A4F]/15 overflow-hidden z-50">
+                <div className="fixed inset-x-3 top-16 sm:absolute sm:inset-auto sm:right-0 sm:top-auto sm:mt-2 w-auto sm:w-96 bg-white rounded-2xl shadow-2xl border border-[#2D6A4F]/15 overflow-hidden z-50 max-h-[80vh] flex flex-col">
                   <div className="px-4 py-3 bg-[#F8FAF8] border-b border-[#2D6A4F]/10 flex items-center justify-between">
                     <div className="flex items-center gap-2">
                       <span className="font-semibold text-sm text-[#132A13]">Notifications</span>
@@ -303,6 +303,33 @@ export const Navbar: React.FC<NavbarProps> = ({
                       <Sprout className="w-4 h-4 text-[#2D6A4F]" />
                       <span>Manage Crops</span>
                     </button>
+                  </div>
+
+                  {/* Mobile-Friendly Language Selector */}
+                  <div className="px-4 py-2 border-t border-gray-100 sm:hidden">
+                    <div className="text-[10px] font-bold uppercase tracking-wider text-[#52796F] mb-1.5 flex items-center gap-1.5">
+                      <Globe className="w-3 h-3 text-[#2D6A4F]" />
+                      <span>Language</span>
+                    </div>
+                    <div className="grid grid-cols-3 gap-1">
+                      {[
+                        { code: 'en', label: 'English' },
+                        { code: 'hi', label: 'हिन्दी' },
+                        { code: 'bn', label: 'বাংলা' }
+                      ].map(lang => (
+                        <button
+                          key={lang.code}
+                          onClick={() => updateUserLanguage(lang.code as any)}
+                          className={`px-2 py-1 text-[11px] rounded-lg font-bold transition-all text-center ${
+                            user?.language === lang.code
+                              ? 'bg-[#1B4332] text-white shadow-xs'
+                              : 'bg-[#F0F4F1] text-[#2D6A4F] hover:bg-[#E5ECE7]'
+                          }`}
+                        >
+                          {lang.label}
+                        </button>
+                      ))}
+                    </div>
                   </div>
 
                   <div className="pt-1 border-t border-gray-100">
