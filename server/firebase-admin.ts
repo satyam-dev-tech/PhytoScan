@@ -3,10 +3,10 @@ import { getAuth } from 'firebase-admin/auth';
 import crypto from 'crypto';
 import { db } from './db.js';
 
-// Initialize Firebase Admin SDK for Auth token verification with swift-epoch-3q6d2
+// Initialize Firebase Admin SDK for Auth token verification with studio-8864048816-3925b
 if (!getApps().length) {
   initializeApp({
-    projectId: 'swift-epoch-3q6d2'
+    projectId: 'studio-8864048816-3925b'
   });
 }
 

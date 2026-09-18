@@ -1,12 +1,12 @@
 {
-  "projectId": "swift-epoch-3q6d2",
-  "appId": "1:1063682319172:web:cea55d75b9e253f8106d11",
+  "projectId": "studio-8864048816-3925b",
+  "appId": "1:8864048816:web:3925b",
   "apiKey": "AIzaSyCnocDL9lID_2hCI-zA5BnEz8DfBqT3JXg",
-  "authDomain": "swift-epoch-3q6d2.firebaseapp.com",
+  "authDomain": "studio-8864048816-3925b.firebaseapp.com",
   "firestoreDatabaseId": "ai-studio-phytoscan-7fd47cb4-6d6c-4235-aa38-ef30e582f1bb",
-  "storageBucket": "swift-epoch-3q6d2.firebasestorage.app",
-  "messagingSenderId": "1063682319172",
+  "storageBucket": "studio-8864048816-3925b.firebasestorage.app",
+  "messagingSenderId": "8864048816",
   "measurementId": "",
-  "oAuthClientId": "1063682319172-615rnqi160m3v13h9j218jj974hen3ac.apps.googleusercontent.com",
+  "oAuthClientId": "8864048816-apps.googleusercontent.com",
   "recaptchaSiteKey": ""
 }
